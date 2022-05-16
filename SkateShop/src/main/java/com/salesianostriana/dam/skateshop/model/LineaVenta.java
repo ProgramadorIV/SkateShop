@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.skateshop.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -8,7 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @AllArgsConstructor @NoArgsConstructor @Builder
+@Data @AllArgsConstructor @NoArgsConstructor @Builder @Entity
 public class LineaVenta {
 
 	@Id @GeneratedValue

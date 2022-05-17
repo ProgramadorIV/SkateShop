@@ -17,4 +17,19 @@ public class ProductoService {
 		
 		return repository.findAll();
 	}
+	
+	public List <Producto> findByMarca(String marca){
+		
+		return repository.findByMarcaContainsIgnoreCase(marca);
+	}
+	
+	public List<Producto> findByTipo (String tipo){
+		
+		return repository.findByTipoContainsIgnoreCase(tipo);
+	}
+	
+	public List<Producto> findByNombre(String nombre){
+		
+		return repository.findbyNombreContainsIgnoreCase(nombre);
+	}
 }

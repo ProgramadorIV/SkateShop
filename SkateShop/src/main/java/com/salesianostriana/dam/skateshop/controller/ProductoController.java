@@ -12,13 +12,13 @@ public class ProductoController {
 	
 	@Autowired
 	private ProductoService service;
-	private String [] hola = {"1","2","3"};
+//	private String [] hola = {"1","2","3"};
 	
 	@GetMapping("/tienda")
 	public String productList(Model model) {
 			
-//			model.addAttribute("productos", service.findAllProductos());
-			model.addAttribute("productos", hola);
+			model.addAttribute("productos", service.findAllProductos());
+//			model.addAttribute("productos", hola);
 	
 			return "tienda";
 		}

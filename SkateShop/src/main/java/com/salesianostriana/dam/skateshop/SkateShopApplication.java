@@ -8,6 +8,7 @@ public class SkateShopApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SkateShopApplication.class, args);
+		
 	}
 
 }

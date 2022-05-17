@@ -30,7 +30,7 @@ public class ProductoService {
 	
 	public List<Producto> findByNombre(String nombre){
 		
-		return repository.findbyNombreContainsIgnoreCase(nombre);
+		return repository.findByNombreContainsIgnoreCase(nombre);
 	}
 	
 	public Producto addProducto(Producto p) {

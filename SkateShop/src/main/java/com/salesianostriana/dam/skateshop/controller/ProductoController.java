@@ -15,12 +15,14 @@ public class ProductoController {
 //	private String [] hola = {"1","2","3"};
 	
 	@GetMapping("/tienda")
-	public String productList(Model model) {
+	public String mostrarProductos(Model model) {
 			
 			model.addAttribute("productos", service.findAllProductos());
 //			model.addAttribute("productos", hola);
 	
 			return "tienda";
 		}
+	
+	
 
 }

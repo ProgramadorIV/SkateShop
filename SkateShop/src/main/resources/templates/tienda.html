@@ -14,7 +14,7 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./css/tienda.css">
+    <link rel="stylesheet" href="../static/css/tienda.css">
 </head>
 <body>
 
@@ -48,9 +48,16 @@
             </div>
         </nav>
 
-        <div>
-        	<div class="col-md-3 col-sm-6" th:each="producto : ${productos}" style="height: 550px;"><span th:text="${producto}">23,99€</span></div>
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 col-12">
+            
+          </div>
         </div>
+
+        <div class="col-md-3 col-sm-6" th:each="producto : ${productos}" style="height: 550px;"><span th:text="${producto}">23,99€</span></div>
+
+		
 
         <footer>
       

@@ -32,4 +32,20 @@ public class ProductoService {
 		
 		return repository.findbyNombreContainsIgnoreCase(nombre);
 	}
+	
+	public Producto addProducto(Producto p) {
+		
+		return repository.save(p);
+		
+	}
+	
+	public Producto editProducto (Producto p) {
+		
+		return repository.save(p);
+	}
+	
+	public void deleteProducto(Producto p) {
+		
+		repository.delete(p);
+	}
 }

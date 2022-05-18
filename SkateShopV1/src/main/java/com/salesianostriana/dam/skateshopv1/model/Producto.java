@@ -19,7 +19,6 @@ public class Producto {
 	private double precio;
 	private int cantidad;
 	private String tipo;
-	private double descuento;
 	private String imagen;
 	
 

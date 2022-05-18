@@ -15,6 +15,8 @@ public class Venta {
 
 	@Id @GeneratedValue
 	private long idVenta;
+	
+	
 	private LocalDate fecha;
 	private double importe;
 }

@@ -17,10 +17,10 @@ public class ProductoController {
 	@GetMapping("/tienda")
 	public String mostrarProductos(Model model) {
 			
-			model.addAttribute("productos", service.findAllProductos());
+			model.addAttribute("productos", service.findAll());
 //			model.addAttribute("productos", hola);
 	
-			return "tienda";
+			return "/public/tienda";
 		}
 	
 	

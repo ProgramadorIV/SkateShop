@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -16,7 +16,8 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="./css/index.css">
+
+  <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
 
 </head>
 
@@ -27,7 +28,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="./img/skateLogo.png" alt="skateLogo" width="90px">
+          <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}" alt="skateLogo" width="90px">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,15 +102,15 @@
         </div>
 
         <div class="col-4 columnaBonita">
-          <img src="./img/skateLogo.png" alt="Logo skate" width="100px">
+          <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}"alt="Logo skate" width="100px">
         </div>
 
         <div class="col-4 columnaBonita">
 
           <p style="font-weight: 800;">Contáctanos</p>
-          <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="./img/facebook.png" alt="facebook" class="icono"></a>
-          <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="./img/twitter.png" alt="twitter" class="icono"></a>
-          <a href="https://www.instagram.com/a_nt0ni_0/"><img src="./img/instagram.png" alt="instagram" class="icono"></a>             
+          <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{media/facebook.png}" alt="facebook" class="icono"></a>
+          <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{media/twitter.png}"alt="twitter" class="icono"></a>
+          <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{media/instagram.png}" alt="instagram" class="icono"></a>             
         </div>
 
       

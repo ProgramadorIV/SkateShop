@@ -30,7 +30,7 @@ nav{
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    background-image: url("../img/fondoInicio.jpeg");
+    background-image: url("../media/fondoInicio.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -53,6 +53,21 @@ footer{
     margin-top: 10px;
     background-color: #ccc;
 
+}
+
+.card-header{
+
+    border-bottom: none;
+    width: 100%;
+    height: 100%;
+
+}
+
+.card-header>img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 

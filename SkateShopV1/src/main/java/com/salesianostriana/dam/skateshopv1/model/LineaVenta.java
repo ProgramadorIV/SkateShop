@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class LineaVenta {
 
 	@Id @GeneratedValue
-	private long idLineaVenta;
+	private long id;
 	
 	@ManyToOne
 	private Producto producto;

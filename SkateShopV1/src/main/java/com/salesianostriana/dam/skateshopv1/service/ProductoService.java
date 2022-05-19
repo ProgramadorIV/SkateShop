@@ -5,19 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.salesianostriana.dam.skateshopv1.repository.ProductoRepository;
+import com.salesianostriana.dam.skateshopv1.service.base.ServicioBaseImpl;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
 
 
 @Service
-public class ProductoService {
+public class ProductoService extends ServicioBaseImpl<Producto, Long, ProductoRepository>{
 
 	@Autowired
 	private ProductoRepository repository;
-	
-	public List <Producto> findAllProductos(){
-		
-		return repository.findAll();
-	}
 	
 	public List <Producto> findByMarca(String marca){
 		
@@ -34,19 +30,4 @@ public class ProductoService {
 		return repository.findByNombreContainsIgnoreCase(nombre);
 	}
 	
-	public Producto addProducto(Producto p) {
-		
-		return repository.save(p);
-		
-	}
-	
-	public Producto editProducto (Producto p) {
-		
-		return repository.save(p);
-	}
-	
-	public void deleteProducto(Producto p) {
-		
-		repository.delete(p);
-	}
 }

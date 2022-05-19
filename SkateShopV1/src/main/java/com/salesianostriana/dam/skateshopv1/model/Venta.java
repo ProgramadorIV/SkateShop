@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Venta {
 
 	@Id @GeneratedValue
-	private long idVenta;
+	private long id;
 	
 	
 	private LocalDate fecha;

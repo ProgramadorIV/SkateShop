@@ -40,7 +40,7 @@
               <a class="nav-link active" aria-current="page" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tienda.html">Tienda</a>
+              <a class="nav-link" th:href="@{/tienda}">Tienda</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="galeria.html">Galeria</a>
@@ -58,7 +58,7 @@
 
     <div class="form_container">
 
-      <form class="form-horizontal">
+      <form class="form">
         <fieldset>
 
           <legend>Log In</legend>
@@ -90,32 +90,31 @@
       </form>
 
     </div>
-
     
     <footer>
       
-      <div class="row">
-
-        <div class="col-4 columnaBonita">
+      <div class="row columnaBonita p-1 p-lg-3 ">
+    
+        <div class="col-4">
           <p style="font-weight: 800;">C. Condes de Bustillo, 17
-            41010 Sevilla</p>
+          41010 Sevilla</p>
         </div>
-
-        <div class="col-4 columnaBonita">
-          <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}"alt="Logo skate" width="100px">
+    
+        <div class="col-4">
+          <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
         </div>
-
-        <div class="col-4 columnaBonita">
-
+    
+        <div class="col-4">
+    
           <p style="font-weight: 800;">Contáctanos</p>
-          <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{media/facebook.png}" alt="facebook" class="icono"></a>
-          <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{media/twitter.png}"alt="twitter" class="icono"></a>
-          <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{media/instagram.png}" alt="instagram" class="icono"></a>             
+          <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{/media/facebook.png}" alt="facebook" class="icono"></a>
+          <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{/media/twitter.png}" alt="twitter" class="icono"></a>
+          <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{/media/instagram.png}" alt="instagram" class="icono"></a>             
         </div>
-
-      
+    
+          
       </div>
-
+    
     </footer>
   </div>
 

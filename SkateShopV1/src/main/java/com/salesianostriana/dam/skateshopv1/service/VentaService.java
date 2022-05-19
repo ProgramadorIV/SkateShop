@@ -8,5 +8,6 @@ import com.salesianostriana.dam.skateshopv1.service.base.ServicioBaseImpl;
 
 @Service
 public class VentaService extends ServicioBaseImpl<Venta, Long, VentaRepository>{
+	
 
 }

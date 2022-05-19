@@ -31,13 +31,13 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="inicio.html">Inicio</a>
+                    <a class="nav-link" aria-current="page" th:href="@{/}">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" href="tienda.html">Tienda</a>
+                    <a class="nav-link active" th:href="@{tienda.html}">Tienda</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="galeria.html">Galeria</a>
+                    <a class="nav-link" th:href="galeria.html">Galeria</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="logIn.html">Log In</a>
@@ -48,38 +48,40 @@
             </div>
         </nav>
 
-        <div class="row">
-              <div class="card col-lg-3 col-md-6 col-12 m-5" th:each="producto : ${productos}">
-                <div class="card-header">
-                  <img th:src="${producto.imagen}" alt="Imagen de producto">
-                </div>
-                <div class="card-body my-3">
-                  <p th:text="${producto.nombre}"></p>
-                </div>
-                <div class="footer my-3">
-                  <a href="" class="btn btn-primary">Comprar</a>
-                </div>
-              </div>
+        <!--Aqui voy a añadir los distintos filtros de productos-->
+        <div>
+
         </div>
 
-        <div class="col-md-3 col-sm-6" style="height: 550px;"><span th:text="${producto}">23,99€</span></div>
-
-		
+        <!--ESTA ES LA WENAAAA-->
+        <div class="row">
+          <div class="col-sm-3 mb-3" th:each="producto : ${productos}">
+            <div class="card col-item p-2 bg-light h-100">
+              <img th:src="${producto.imagen}" alt="Imagen de producto" class="img-responsive h-100 w-100">
+              <div>
+                <p class="text-center" th:text="${producto.nombre}"></p>
+                <p class="font-weight-bold text-primary text-center" th:text="${#numbers.formatCurrency(producto.precio)}"><p>
+              </div>
+              <!--Aquí me falta añadir el boton de comprar que mandará al carrito.html-->
+              <a href="" class="btn btn-primary text-center">Comprar</a>
+            </div>
+          </div>
+        </div>
 
         <footer>
       
-          <div class="row">
+          <div class="row columnaBonita p-1 p-lg-3 ">
     
-            <div class="col-4 columnaBonita">
+            <div class="col-4">
               <p style="font-weight: 800;">C. Condes de Bustillo, 17
                 41010 Sevilla</p>
             </div>
     
-            <div class="col-4 columnaBonita">
+            <div class="col-4">
               <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
             </div>
     
-            <div class="col-4 columnaBonita">
+            <div class="col-4">
     
               <p style="font-weight: 800;">Contáctanos</p>
               <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{/media/facebook.png}" alt="facebook" class="icono"></a>

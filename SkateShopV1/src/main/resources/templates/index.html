@@ -43,7 +43,7 @@
               <a class="nav-link" th:href="@{/tienda}">Tienda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="galeria.html">Galeria</a>
+              <a class="nav-link" th:href="@{/galeria}">Fotos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="logIn.html">Log Out</a>
@@ -56,39 +56,32 @@
 
 
 
-    <div class="form_container">
-
+    <div class="formulario">
       <form class="form">
         <fieldset>
-
           <legend>Log In</legend>
-
           <div class="form-group">
             <label class="col-md-12 control-label" for="textinput">Usuario</label>
             <div class="col-md-12 my-3">
-              <input id="textinput" name="textinput" type="text" placeholder="Pepito" class="form-control input-md">
-              <span class="help-block">Introduzca aquí su nombre de usuario.</span>
+              <input id="textinput" name="textinput" type="text" placeholder="Pepito" class="form-control input-md text-info">
+              <span class="help-block">Introduzca su nombre de usuario</span>
             </div>
           </div>
-
           <div class="form-group">
-            <label class="col-md-12 control-label" for="passwordinput">Contraseña</label>
+            <label class="col-md-12 control-label" for="passwordinput">Password</label>
             <div class="col-md-12 my-3">
               <input id="passwordinput" name="passwordinput" type="password" placeholder="Helado1"
-                class="form-control input-md">
-              <span class="help-block">Introduzca aquí su contraseña.</span>
+                class="form-control input-md text-info">
+                <span class="help-block">Introduzca su password</span>
+              </div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <div class="col-md-4 offset-5 mt-4">
-              <button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>
+            <div class="form-group d-flex justify-content-center align-items-center">
+              <div class="col-md-4 mt-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>
+              </div>
             </div>
-          </div>
-
         </fieldset>
       </form>
-
     </div>
     
     <footer>

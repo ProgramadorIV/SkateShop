@@ -30,4 +30,9 @@ public class ProductoService extends ServicioBaseImpl<Producto, Long, ProductoRe
 		return repository.findByNombreContainsIgnoreCase(nombre);
 	}
 	
+	public List <Producto> findByFiltros(String nombre, String tipo, String marca){
+		
+		return repository.findByNombreLikeAndTipoLikeAndMarcaLike(nombre, tipo, marca);
+	}
+	
 }

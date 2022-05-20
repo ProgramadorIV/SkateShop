@@ -1,5 +1,11 @@
+@font-face {
+    font-family: "urban";
+    src: url(../font/UrbanJungleDEMO.otf);
+}
+
 nav{
     border: 2px solid black;
+    font-family: "urban";
 }
 
 .botonBonito{
@@ -22,7 +28,7 @@ nav{
     height: 30px;
 }
 
-.form_container{
+.formulario{
 
     width: 100%;
     height: 900px;
@@ -33,17 +39,18 @@ nav{
     background-image: url("../media/fondoInicio.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+
     
 }
 
 form{
-    color: white;
-    width: 25%;
+    color: grey;
     padding: 10px;
     margin-top: 50px;
     border: 3px solid white;
     border-radius: 8px;
     background-color: transparent;
+    font-family: "urban";
 }
 
 footer{
@@ -76,9 +83,3 @@ footer{
 .img-responsive{
     object-fit: contain;
 }
-
-.form{
-    width: 42%;
-}
-
-

@@ -55,4 +55,12 @@ public class ProductoController {
 	  return "tienda";
 	  }
 
+//	@PostMapping("/search")
+//	  public String searchProductoV2(@ModelAttribute("buscarForm") BuscarBean buscarBean,
+//			 Model model){
+//	  	model.addAttribute("productos", service.findByNombre(buscarBean.getBusqueda()));
+//	  
+//	  return "tienda";
+//	  }
+	
 }

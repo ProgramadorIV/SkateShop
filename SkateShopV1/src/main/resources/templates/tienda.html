@@ -37,7 +37,7 @@
                     <a class="nav-link active" th:href="@{/tienda}">Tienda</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" th:href="galeria.html">Galeria</a>
+                    <a class="nav-link" th:href="@{galeria}">Galeria</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="logIn.html">Log In</a>
@@ -51,7 +51,7 @@
         <!--Aqui voy a añadir los distintos filtros de productos-->
         <div class="col-12 bg-secondary my-3 p-4">
 
-            <form th:action="@{search}" th:object="${buscarForm}" method="POST">
+            <form th:action="@{search}" th:object="${buscarForm}" method="POST" class="border-0 w-50">
               <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2"/>
               <button class="btn btn-primary p-2" type="submit">Filtrar</button>
             </form>

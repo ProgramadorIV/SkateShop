@@ -24,5 +24,11 @@ public class GeneralController {
 		return "galeria";
 	}
 	
+	@GetMapping({"/error"})
+	public String mostrarError(Model model) {
+		
+		return "error";
+	}
+	
 
 }

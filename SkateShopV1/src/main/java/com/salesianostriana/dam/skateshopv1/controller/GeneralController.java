@@ -14,21 +14,42 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class GeneralController {
 	
 	/**
-	 * Este método solo pinta la página galeria
+	 * Este método solo pinta la página galeria.
 	 * @param model
-	 * @return String con la pagina galeria.
+	 * @return String de la pagina galeria.
 	 */
+	
 	@GetMapping({"/galeria"})
 	public String mostrarGaleria(Model model) {
 		
 		return "galeria";
 	}
 	
+	/**
+	 * Este método pinta la página de inicio de sesión.
+	 * @param model
+	 * @return String de la página de inicio de sesión.
+	 */
+	
+	@GetMapping({"/logIn"})
+	public String mostrarLogIn(Model model) {
+		
+		return "logIn";
+	}
+	
+	/**
+	 * 
+	 * @param model
+	 * @return String de la página de error.
+	 */
+	
 	@GetMapping({"/error"})
 	public String mostrarError(Model model) {
 		
 		return "error";
 	}
+	
+	
 	
 
 }

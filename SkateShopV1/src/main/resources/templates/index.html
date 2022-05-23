@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -18,95 +18,77 @@
 
 
   <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
-
 </head>
-
 <body>
 
-  <div class="container-fluid">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}" alt="skateLogo" width="90px">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/tienda}">Tienda</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/galeria}">Fotos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logIn}">Log In</a>
+                  </li>         
+                </ul>
+              </div>
+            </div>
+          </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}" alt="skateLogo" width="90px">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/tienda}">Tienda</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" th:href="@{/galeria}">Fotos</a>
-            </li>          
-          </ul>
-        </div>
-      </div>
-    </nav>
+          <!--Hacer unas columnas bien wapas: dos de col-12 al principio donde se explique un poco quienes somos y to el rollo y 
+              después una columna col-12 que tenga dos columnas col-6 que muestren dos imágenes con animación o yo que se.-->
 
+          <div class="container">
 
+            <div class="row">
+              <div class="col">
 
-    <div class="formulario">
-      <form class="form">
-        <fieldset>
-          <legend>Log In</legend>
-          <div class="form-group">
-            <label class="col-md-12 control-label" for="textinput">Usuario</label>
-            <div class="col-md-12 my-3">
-              <input id="textinput" name="textinput" type="text" placeholder="Pepito" class="form-control input-md text-info">
-              <span class="help-block">Introduzca su nombre de usuario</span>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-md-12 control-label" for="passwordinput">Password</label>
-            <div class="col-md-12 my-3">
-              <input id="passwordinput" name="passwordinput" type="password" placeholder="Helado1"
-                class="form-control input-md text-info">
-                <span class="help-block">Introduzca su password</span>
+          
+          <footer>
+      
+            <div class="row columnaBonita p-1 p-lg-3 ">
+          
+              <div class="col-md-4 col-xs-12">
+                <p style="font-weight: 800;">C. Condes de Bustillo, 17
+                41010 Sevilla</p>
               </div>
-            </div>
-            <div class="form-group d-flex justify-content-center align-items-center">
-              <div class="col-md-4 mt-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>
+          
+              <div class="col-md-4 col-xs-12">
+                <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
               </div>
+          
+              <div class="col-md-4 col-xs-12">
+          
+                <p style="font-weight: 800;">Contáctanos</p>
+                <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{/media/facebook.png}" alt="facebook" class="icono"></a>
+                <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{/media/twitter.png}" alt="twitter" class="icono"></a>
+                <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{/media/instagram.png}" alt="instagram" class="icono"></a>             
+              </div>
+          
+                
             </div>
-        </fieldset>
-      </form>
+          
+          </footer>
+
     </div>
     
-    <footer>
-      
-      <div class="row columnaBonita p-1 p-lg-3 ">
-    
-        <div class="col-4">
-          <p style="font-weight: 800;">C. Condes de Bustillo, 17
-          41010 Sevilla</p>
-        </div>
-    
-        <div class="col-4">
-          <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
-        </div>
-    
-        <div class="col-4">
-    
-          <p style="font-weight: 800;">Contáctanos</p>
-          <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{/media/facebook.png}" alt="facebook" class="icono"></a>
-          <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{/media/twitter.png}" alt="twitter" class="icono"></a>
-          <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{/media/instagram.png}" alt="instagram" class="icono"></a>             
-        </div>
-    
-          
-      </div>
-    
-    </footer>
-  </div>
-
 </body>
-
 </html>

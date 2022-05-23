@@ -59,6 +59,8 @@ window.onload = function(){
     textoError.x = 300;
     textoError.y = 200; 
     
+    //Usar app.screen... para las posiciones
+    
     textoLuismi.skew.set(-0.65, 0.32);
     textoLuismi.anchor.set(0.5,0.5);
     textoLuismi.x = 1600;

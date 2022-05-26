@@ -25,8 +25,6 @@ public class ProductoController {
 	
 	@Autowired
 	private ProductoService service;
-//	private String [] hola = {"1","2","3"};
-	
 	
 	/**
 	 * 
@@ -56,7 +54,7 @@ public class ProductoController {
 	  return "tienda";
 	  }
 
-//	@PostMapping("/search")
+//	@PostMapping("/mixedSearch")
 //	  public String searchProductoV2(@ModelAttribute("buscarForm") BuscarBean buscarBean,
 //			 Model model){
 //	  	model.addAttribute("productos", service.findByNombre(buscarBean.getBusqueda()));

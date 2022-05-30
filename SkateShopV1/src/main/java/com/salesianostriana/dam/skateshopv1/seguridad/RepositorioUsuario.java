@@ -21,7 +21,7 @@ public class RepositorioUsuario {
 	public Optional <Usuario> findUsuarioByNombreUsuario(String nombreUsuario){
 		
 		return usuarios.stream()
-				.filter(u -> u.getNombreUsuario().equalsIgnoreCase(nombreUsuario))
+				.filter(u -> u.getUsername().equalsIgnoreCase(nombreUsuario))
 				.findFirst();
 	}
 	
@@ -30,8 +30,8 @@ public class RepositorioUsuario {
 		
 		usuarios = List.of(
 				Usuario.builder()
-				.nombreUsuario("admin")
-				.clave("admin")
+				.username("admin")
+				.password("admin")
 				.role("ADMIN")
 				.nombre("Clara Isabel")
 				.apellidos("Infante de la Torre")
@@ -40,8 +40,8 @@ public class RepositorioUsuario {
 				,
 				
 				Usuario.builder()
-				.nombreUsuario("user")
-				.clave("1234")
+				.username("user")
+				.password("1234")
 				.role("USER")
 				.nombre("Antonio")
 				.apellidos("Jiménez Infante")

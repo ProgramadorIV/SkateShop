@@ -51,9 +51,9 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 			.anyRequest().permitAll()
 			.and().exceptionHandling().accessDeniedPage("/error")
 			.and().formLogin().loginPage("/logIn")
-			.loginProcessingUrl("/login").failureUrl("/loginError").permitAll()
+			.loginProcessingUrl("/logIn").failureUrl("/logInError").permitAll()
 			.and().logout()
-			.logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+			.logoutUrl("/logOut").logoutSuccessUrl("/").permitAll();
 	}
 	
 	
@@ -68,8 +68,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 				.stream()
 				.map(u -> {
 					return User
-							.withUsername(u.getNombreUsuario())
-							.password("{noop}" + u.getClave())
+							.withUsername(u.getUsername())
+							.password("{noop}" + u.getPassword())
 							.roles(u.getRole())
 							.build();
 					

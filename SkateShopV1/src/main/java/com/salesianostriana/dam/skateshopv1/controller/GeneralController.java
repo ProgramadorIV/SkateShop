@@ -26,18 +26,6 @@ public class GeneralController {
 	}
 	
 	/**
-	 * Este método pinta la página de inicio de sesión.
-	 * @param model
-	 * @return String de la página de inicio de sesión.
-	 */
-	
-	@GetMapping({"/logIn"})
-	public String mostrarLogIn(Model model) {
-		
-		return "logIn";
-	}
-	
-	/**
 	 * 
 	 * @param model
 	 * @return String de la página de error.

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8">
@@ -56,31 +56,43 @@
 
 
     <div class="formulario">
-      <form class="form">
+      <form class="form" method="POST" th:action="@{/logIn}" sec:authorize="!isAuthenticated()">
         <fieldset>
           <legend>Log In</legend>
           <div class="form-group">
-            <label class="col-md-12 control-label" for="textinput">Usuario</label>
+            <label class="col-md-12 control-label" for="nombreUsuario">Usuario</label>
             <div class="col-md-12 my-3">
-              <input id="textinput" name="textinput" type="text" placeholder="Pepito" class="form-control input-md text-info">
+              <input id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Pepito" class="form-control input-md text-info">
               <span class="help-block">Introduzca su nombre de usuario</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-12 control-label" for="passwordinput">Password</label>
+            <label class="col-md-12 control-label" for="clave">Password</label>
             <div class="col-md-12 my-3">
-              <input id="passwordinput" name="passwordinput" type="password" placeholder="Helado1"
+              <input id="clave" name="clave" type="password" placeholder="1234"
                 class="form-control input-md text-info">
                 <span class="help-block">Introduzca su password</span>
               </div>
             </div>
             <div class="form-group d-flex justify-content-center align-items-center">
               <div class="col-md-4 mt-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>
+                <input type="submit" class="btn btn-primary" value="Log In">
+                <!--<button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>-->
               </div>
             </div>
         </fieldset>
       </form>
+      <div sec:authorize="isAuthenticated()">
+        <p sec:authentication="nombreUsuario">Nombre </p>
+        <a th:href="@{/logOut}">Log Out</a>
+      </div>
+      <!--<div class="formulario" sec:authorize="isAuthenticated()">
+        <h3>Ya esta usted registrado como</h3>
+        <br>
+        <p sec:authentication="nombre">Nombre: </p>
+        <a th:href="@{/logOut}">Salir</a>
+
+      </div>-->
     </div>
     
     <footer>

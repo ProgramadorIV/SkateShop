@@ -33,8 +33,8 @@ public class RepositorioUsuario {
 				.nombreUsuario("admin")
 				.clave("admin")
 				.role("ADMIN")
-				.nombre("Antonio")
-				.apellidos("Jiménez Infante")
+				.nombre("Clara Isabel")
+				.apellidos("Infante de la Torre")
 				.build()
 				
 				,
@@ -43,8 +43,8 @@ public class RepositorioUsuario {
 				.nombreUsuario("user")
 				.clave("1234")
 				.role("USER")
-				.nombre("Clara Isabel")
-				.apellidos("Infante de la Torre")
+				.nombre("Antonio")
+				.apellidos("Jiménez Infante")
 				.build()
 				);
 	}

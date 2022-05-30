@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.skateshopv1.seguridad;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +25,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	
+	@Autowired
 	private RepositorioUsuario usuarios;
 
 	/**

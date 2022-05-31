@@ -41,6 +41,7 @@ nav{
     background-size: cover;
     background-attachment: fixed;
     background-position-x: center;
+    word-spacing: 4px;
     font-family: "urban";
     
 }

@@ -42,18 +42,18 @@
                   <li class="nav-item">
                     <a class="nav-link" th:href="@{/logIn}" sec:authorize="!isAuthenticated()">Log In</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logOut}" sec:authorize="isAuthenticated()">Log Out</a>
-                  </li>  
                   <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                     <li class="nav-item"> 
-                      <a class="nav-link" th:href="@{/admin/nuevoProducto}" sec:authorize="isAuthenticated()">Nuevo Producto</a>
+                      <a class="nav-link" th:href="@{/admin/gestion}" sec:authorize="isAuthenticated()">Gestion</a>
                     </li>
-                  </span>       
+                  </span>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logOut}" sec:authorize="isAuthenticated()">Log Out</a>
+                  </li>            
                 </ul>
                 <span class="navbar-text pe-4 fs-2">
                   <p sec:authorize="isAuthenticated()" sec:authentication="name"></p>
-                </span>                  
+                </span>              
               </div>
             </div>
         </nav>

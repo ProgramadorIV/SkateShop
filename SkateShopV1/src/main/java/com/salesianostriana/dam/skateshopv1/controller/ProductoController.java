@@ -31,7 +31,7 @@ public class ProductoController {
 	 * @param model
 	 * @return String de la pagina tienda.
 	 */	
-	@GetMapping({"/tienda"})
+	@GetMapping("/tienda")
 	public String mostrarProductos(Model model) {
 		
 		model.addAttribute("productos", service.findAll());

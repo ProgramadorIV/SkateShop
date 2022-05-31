@@ -77,16 +77,11 @@
             <div class="form-group d-flex justify-content-center align-items-center">
               <div class="col-md-4 mt-4">
                 <input type="submit" class="btn btn-primary" value="Log In">
-                <!--<button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>-->
               </div>
             </div>
             
         </fieldset>
       </form>
-      <div sec:authorize="isAuthenticated()">
-        <p sec:authentication="name">Nombre </p>
-        <a th:href="@{/logOut}">Log Out</a>
-      </div>
       <!--<div class="formulario" sec:authorize="isAuthenticated()">
         <h3>Ya esta usted registrado como</h3>
         <br>

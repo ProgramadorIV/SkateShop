@@ -10,10 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminController {
 
-	@GetMapping("{/admin}")
+	@GetMapping("/admin")
 	public String indiceAdmin(Model model, @AuthenticationPrincipal UserDetails userDetails) {
 		
 		model.addAttribute("usuario", userDetails.getUsername());
 		return "admin/index";
+	}
+	
+	@GetMapping("/admin/nuevoProducto")
+	public String nuevoProducto() {
+		
+		return"nuevoProducto";
 	}
 }

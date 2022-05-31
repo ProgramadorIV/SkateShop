@@ -41,6 +41,7 @@ nav{
     background-size: cover;
     background-attachment: fixed;
     background-position-x: center;
+    font-family: "urban";
     
 }
 
@@ -51,7 +52,7 @@ form{
     border: 3px solid white;
     border-radius: 8px;
     background-color: transparent;
-    font-family: "urban";
+    
 }
 
 footer{

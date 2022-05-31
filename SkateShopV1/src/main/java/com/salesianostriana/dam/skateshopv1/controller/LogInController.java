@@ -19,7 +19,7 @@ public class LogInController {
 	 * @return String de la página de inicio de sesión.
 	 */
 	
-	@GetMapping({"/logIn"})
+	@GetMapping("/logIn")
 	public String mostrarLogIn() {
 		
 		return "logIn";

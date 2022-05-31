@@ -19,7 +19,7 @@ public class GeneralController {
 	 * @return String de la pagina galeria.
 	 */
 	
-	@GetMapping({"/galeria"})
+	@GetMapping("/galeria")
 	public String mostrarGaleria(Model model) {
 		
 		return "galeria";
@@ -31,7 +31,7 @@ public class GeneralController {
 	 * @return String de la página de error.
 	 */
 	
-	@GetMapping({"/error"})
+	@GetMapping("/error")
 	public String mostrarError(Model model) {
 		
 		return "error";

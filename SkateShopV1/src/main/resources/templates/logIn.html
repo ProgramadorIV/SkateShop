@@ -47,7 +47,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" th:href="@{/logIn}">Log In</a>
-            </li>      
+            </li>   
           </ul>
         </div>
       </div>
@@ -60,16 +60,16 @@
         <fieldset>
           <legend>Log In</legend>
           <div class="form-group">
-            <label class="col-md-12 control-label" for="nombreUsuario">Usuario</label>
+            <label class="col-md-12 control-label" for="username">Usuario</label>
             <div class="col-md-12 my-3">
-              <input id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Pepito" class="form-control input-md text-info">
+              <input id="username" name="username" type="text" placeholder="user" class="form-control input-md text-info">
               <span class="help-block">Introduzca su nombre de usuario</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-12 control-label" for="clave">Password</label>
+            <label class="col-md-12 control-label" for="password">Password</label>
             <div class="col-md-12 my-3">
-              <input id="clave" name="clave" type="password" placeholder="1234"
+              <input id="password" name="password" type="password" placeholder="1234"
                 class="form-control input-md text-info">
                 <span class="help-block">Introduzca su password</span>
               </div>
@@ -80,10 +80,11 @@
                 <!--<button id="singlebutton" name="singlebutton" class="btn btn-primary">Log In</button>-->
               </div>
             </div>
+            
         </fieldset>
       </form>
       <div sec:authorize="isAuthenticated()">
-        <p sec:authentication="nombreUsuario">Nombre </p>
+        <p sec:authentication="name">Nombre </p>
         <a th:href="@{/logOut}">Log Out</a>
       </div>
       <!--<div class="formulario" sec:authorize="isAuthenticated()">

@@ -62,8 +62,8 @@
       <!--AQUI VA UN DIV CON UN MENÚ LATERAL Y UNA TABLA DONDE METER PRODUCTOS YA EXISTENTES Y DISTINTOS BOTONES DE GESTIÓN-->
 
       <div class="row w-100 mt-3 mx-0">
-        <div class="col-md-3 col-sm-12 sticky-top">
-          <nav class="nav flex-column">
+        <div class="col-md-3 col-sm-12 sticky-top bottom-0 filtroAdmin border border-dark border-2">
+          <nav class="nav flex-column border-0">
             <div class="dropdown m-2">
             
             <!--HACER PETICIONES DE BUSQUEDA Y TO LA PESCA-->
@@ -85,7 +85,7 @@
         <div class="col">
         
             <!--aqui va la tabla-->
-            <div class="table-responsive">
+            <div class="table-responsive tablita">
                 <table class="table align-middle">
                   <thead>
                     <tr>
@@ -103,7 +103,7 @@
                       <td th:text="${producto.id}"></td>
                       <td> 
                         <img th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'https://clipground.com/images/picture-not-available-clipart-2.jpg'"
-                        alt="Imagen de producto">
+                        alt="Imagen de producto" class="img-responsive">
                       </td>
                       <td th:text="${producto.nombre}"></td>
                       <td th:text="${producto.marca}"></td>

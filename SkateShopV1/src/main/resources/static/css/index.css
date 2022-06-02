@@ -85,3 +85,20 @@ footer{
 .img-responsive{
     object-fit: contain;
 }
+
+.filtroAdmin{
+
+    top: 118px;
+}
+.tablita{
+
+    margin-left: 27%;
+}
+
+@media (max-width: 576px){
+
+    .tablita {
+        
+        margin-left: 0;
+    }
+}

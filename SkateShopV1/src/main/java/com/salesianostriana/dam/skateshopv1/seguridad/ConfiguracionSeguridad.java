@@ -45,7 +45,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		http
 			.csrf().disable()
-			.authorizeRequests().antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
+			.authorizeRequests()
 			.antMatchers("/admin/**").hasRole("ADMIN").anyRequest().permitAll().and().exceptionHandling()
 			.accessDeniedPage("/error").and().formLogin()
 			.defaultSuccessUrl("/").loginPage("/logIn")

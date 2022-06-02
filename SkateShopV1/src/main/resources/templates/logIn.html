@@ -46,9 +46,20 @@
               <a class="nav-link" th:href="@{/galeria}">Fotos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" th:href="@{/logIn}">Log In</a>
-            </li>   
+              <a class="nav-link active" th:href="@{/logIn}" sec:authorize="!isAuthenticated()">Log In</a>
+            </li>
+            <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+               <li class="nav-item"> 
+                  <a class="nav-link" th:href="@{/admin/gestion}" sec:authorize="isAuthenticated()">Gestion</a>
+               </li>
+            </span>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/logOut}" sec:authorize="isAuthenticated()">Log Out</a>
+            </li>            
           </ul>
+          <span class="navbar-text pe-4 fs-2">
+            <p sec:authorize="isAuthenticated()" sec:authentication="name"></p>
+          </span>              
         </div>
       </div>
     </nav>
@@ -57,6 +68,7 @@
 
     <div class="formulario">
       <form class="form" method="POST" th:action="@{/logIn}" sec:authorize="!isAuthenticated()">
+        <p th:if="${loginError}" class="error text-danger">Error en el nombre de usuario y/o contraseña</p>
         <fieldset>
           <legend>Log In</legend>
           <div class="form-group">
@@ -82,13 +94,10 @@
             
         </fieldset>
       </form>
-      <!--<div class="formulario" sec:authorize="isAuthenticated()">
-        <h3>Ya esta usted registrado como</h3>
-        <br>
-        <p sec:authentication="nombre">Nombre: </p>
-        <a th:href="@{/logOut}">Salir</a>
-
-      </div>-->
+      <div class="formulario bg-light" sec:authorize="isAuthenticated()">
+        <h3 class="text-warning">Ya esta usted registrado como</h3>
+        <h3 class="text-warning ps-2" sec:authentication="name">Nombre: </h3>
+      </div>
     </div>
     
     <footer>

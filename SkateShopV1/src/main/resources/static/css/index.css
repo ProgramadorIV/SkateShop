@@ -86,19 +86,8 @@ footer{
     object-fit: contain;
 }
 
-.filtroAdmin{
+.envoltorioFotos{
 
-    top: 118px;
-}
-.tablita{
-
-    margin-left: 27%;
-}
-
-@media (max-width: 576px){
-
-    .tablita {
-        
-        margin-left: 0;
-    }
+    width: 100px;
+    height: 200px;
 }

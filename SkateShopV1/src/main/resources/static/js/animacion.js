@@ -80,6 +80,7 @@ function animacion(){
         app.ticker.add((delta) => {
             
             bunny.rotation += 0.01 * delta;
+            bunny.scale.set(escala*(0.5*(1*Math.sin(2*Math.PI*tiempo/200))));
         /* if(i==(Math.floor( tam*tam/2))){
                 bunny.scale.set(escala*(0.5*(1*Math.sin(2*Math.PI*tiempo/200))));
             }*/

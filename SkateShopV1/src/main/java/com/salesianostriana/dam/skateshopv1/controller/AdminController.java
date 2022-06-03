@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.skateshopv1.model.BuscarBean;
+import com.salesianostriana.dam.skateshopv1.model.Producto;
 import com.salesianostriana.dam.skateshopv1.service.ProductoService;
 
 @Controller
@@ -22,7 +24,7 @@ public class AdminController {
 	HttpSession session;
 	
 	@Autowired
-	private ProductoService service;
+	private ProductoService productoService;
 	
 	/**
 	 * Método que permite mostrar la página de inicio y muestra que estas logeado como administrador.
@@ -47,7 +49,7 @@ public class AdminController {
 	@GetMapping("/admin/gestion")
 	public String gestion(Model model) {
 		
-		model.addAttribute("productos", service.findAll());
+		model.addAttribute("productos", productoService.findAll());
 		
 		model.addAttribute("buscarForm", new BuscarBean());
 		return "gestion";
@@ -63,16 +65,50 @@ public class AdminController {
 	@PostMapping("/admin/search")
 	  public String searchProductoAdmin(@ModelAttribute("buscarForm") BuscarBean buscarBean,
 			 Model model){
-	  	model.addAttribute("productos", service.findByNombre(buscarBean.getBusqueda()));
+	  	model.addAttribute("productos", productoService.findByNombre(buscarBean.getBusqueda()));
 	  
 	  return "gestion";
 	  }
 	
-	//INCOMPLETO
+	//METODOS PARA AÑADIR PRODUCTOS
 	@GetMapping("/admin/nuevoProducto")
-	public String nuevoProducto() {
+	public String mostrarForm(Model model) {
 		
+		model.addAttribute("producto", new Producto());
 		return"nuevoProducto";
+	}
+	
+	//ESTO DEBE ESTAR EN EL FORMULARIO DE PRODUCTOS
+	@PostMapping("/admin/nuevoProducto/submit")
+	public String procesarForm(@ModelAttribute("producto") Producto p) {
+		
+		productoService.save(p);
+		return "redirect:/admin/gestion";
+	}
+	
+	//METODOS PARA EDITAR PRODUCTOS
+	
+	@GetMapping("/admin/editarProducto/{id}")
+	public String editarProducto(@PathVariable("id") long id, Model model) {
+		
+		model.addAttribute("producto", productoService.findById(id));
+		return "nuevoProducto";
+	}
+	
+	@PostMapping("/admin/editarProducto/submit")
+	public String procesarEdicion(@ModelAttribute("producto") Producto p) {
+		
+		productoService.edit(p);
+		return "redirect:/admin/gestion";
+	}
+	
+	//METODO PARA BORRAR PRODUCTOS
+	
+	@GetMapping("/admin/borrarProducto/{id}")
+	public String borrarProducto(@PathVariable("id") long id) {
+		
+		productoService.deleteById(id);
+		return "redirect:/admin/gestion";
 	}
 	
 }

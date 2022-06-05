@@ -90,8 +90,8 @@ public class AdminController {
 	
 	@GetMapping("/admin/editarProducto/{id}")
 	public String editarProducto(@PathVariable("id") long id, Model model) {
-		
-		model.addAttribute("producto", productoService.findById(id));
+
+		model.addAttribute("producto", productoService.findById(id).get());
 		return "nuevoProducto";
 	}
 	

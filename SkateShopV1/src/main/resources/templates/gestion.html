@@ -60,28 +60,31 @@
     </header>
 
 
-      <div class="row w-100 mt-3 mx-0">
-        <div class="col-md-3 col-sm-12 bottom-0 border border-dark border-2 bg-white">
-          <nav class="nav flex-column border-0 position-fixed">
-            <div class="dropdown m-2">
-            	<form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 mt-0">
-                	<input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
-                	<button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
-            	</form>
-              <a class="btn btn-secondary dropdown-toggle m-2" role="button" data-bs-toggle="dropdown">
-                Mostrar
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                <li><a class="dropdown-item" href="@{/admin/gestionVentas}">Ventas</a></li>
-              </ul>
+      <div class="row w-100 mx-0">
+        <div class="col-md-3 col-sm-12 border border-dark border-2 bg-white">
+          <div class="w-100 h-100 bg-white">
+            <nav class="nav flex-column border-0 position-fixed">
+              <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 mt-0">
+                <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
+                <button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
+              </form>
+              <div class="dropdown m-0">
+                <a class="btn btn-secondary dropdown-toggle m-2" role="button" data-bs-toggle="dropdown">
+                  Mostrar
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
+                  <li><a class="dropdown-item" href="@{/admin/gestionVentas}">Ventas</a></li>
+                </ul>              
+              </div>
               <div class="m-2">
                 <a th:href="@{/admin/nuevoProducto}" class="btn btn-primary">Nuevo Producto</a>
               </div>
-              
-            </div>
+  
+            </nav>
 
-          </nav>
+          </div>
+          
         </div>
         <div class="col-md-9">
         

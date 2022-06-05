@@ -46,6 +46,11 @@ nav{
     
 }
 
+.cambiarFuente input{
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 form{
     color: grey;
     padding: 10px;

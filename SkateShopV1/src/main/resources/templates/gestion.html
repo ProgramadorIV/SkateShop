@@ -61,10 +61,10 @@
 
 
       <div class="row w-100 mx-0">
-        <div class="col-md-3 col-sm-12 border border-dark border-2 bg-white">
+        <div class="col-md-3 col-sm-12 border border-dark border-2 border-top-0 bg-white">
           <div class="w-100 h-100 bg-white">
             <nav class="nav flex-column border-0 position-fixed">
-              <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 mt-0">
+              <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 m-2 mt-3">
                 <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
                 <button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
               </form>
@@ -132,7 +132,7 @@
 
       <footer>
       
-        <div class="row columnaBonita p-1 p-lg-3 ">
+        <div class="row columnaBonita p-1 p-lg-3">
       
           <div class="col-md-4 col-xs-12">
             <p style="font-weight: 800;">C. Condes de Bustillo, 17

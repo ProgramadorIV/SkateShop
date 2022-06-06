@@ -16,24 +16,24 @@
 
     <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
 </head>
-<body>
+<body class="fondo">
 
     <!--FALTA HACER QUE LOS INPUT DE NÚMEROS SEAN MÁS CHICOS Y LOS DE TEXTOS Y LAS AYUDAS DE TODO EL ESPACIO.-->
 
     <div class="formulario cambiarFuente">
 
-        <form class="form" th:action="${producto.id != 0} ? @{/admin/editarProducto/submit} : @{/admin/nuevoProducto/submit}" 
+        <form class="form text-light" th:action="${producto.id != 0} ? @{/admin/editarProducto/submit} : @{/admin/nuevoProducto/submit}" 
         th:object="${producto}" method="POST">
             <fieldset>
             
             <!-- Form Name -->
             <legend th:text="${producto.id !=0 } ? 'Modificar producto' : 'Nuevo producto' "></legend>
             
-            <input th:field="*{id}" class = "hidden">
+            <input th:if="${producto.id != 0}" name="id" type="hidden" th:field="*{id}" />
             <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Nombre</label>  
-              <div class="col-md-4">
+            <div class="form-group my-3">
+              <label class="col-md-3 control-label my-2" for="textinput">Nombre</label>  
+              <div class="col-md-12">
               <input id="textinput" name="textinput" type="text" placeholder="Nombre" 
               class="form-control input-md" th:field="*{nombre}">
               <span class="help-block">Introduzca el nombre del producto</span>  
@@ -41,17 +41,17 @@
             </div>
             
             <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Imagen</label>  
-              <div class="col-md-4">
+            <div class="form-group my-3">
+              <label class="col-md-3 control-label my-2" for="textinput">Imagen</label>  
+              <div class="col-md-12">
               <input id="textinput" name="textinput" type="text" placeholder="http://......" 
               class="form-control input-md" th:field="*{imagen}">
               <span class="help-block">Introduzca la url del producto</span>  
               </div>
             </div>
 
-            <div class="form-group">
-              <label class="col-md-12 control-label" for="textinput">Marca</label>  
+            <div class="form-group my-3">
+              <label class="col-md-3 control-label my-2" for="textinput">Marca</label>  
               <div class="col-md-12">
               <input id="textinput" name="textinput" type="text" placeholder="Independent" 
               class="form-control input-md" th:field="*{marca}">
@@ -60,8 +60,8 @@
             </div>
 
             <!-- Multiple Radios -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="radios">Tipo</label>
+            <div class="form-group my-3">
+              <label class="col-md-3 control-label my-2" for="radios">Tipo</label>
               <div class="col-md-4">
               <div class="radio">
                 <label for="radios-0">
@@ -103,26 +103,26 @@
             </div>
             
             <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Precio</label>  
-              <div class="col-md-4">
-              <input id="textinput" name="textinput" type="text" placeholder="9999" 
-              class="form-control input-md" th:field="*{precio}">
-              <span class="help-block">Introduzca el precio del producto</span>  
-              </div>
+            <div class="form-group my-3">
+              <label class="col-md-3 control-label my-2" for="textinput">Precio</label>  
+              <div class="col-2">
+                <input id="textinput" name="textinput" type="text" placeholder="9999" 
+                class="form-control input-md" th:field="*{precio}">
+              </div>            
+              <span class="help-block col-md-12">Introduzca el precio del producto</span>  
             </div>
             
             <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Cantidad</label>  
-              <div class="col-md-4">
-              <input id="textinput" name="textinput" type="text" placeholder="3" 
-              class="form-control input-md" th:field="*{cantidad}">
-              <span class="help-block">Introduzca la cantidad de productos de las que disponemos</span>  
+            <div class="form-group my-3">
+              <label class="col-md-3 control-label my-2" for="textinput">Cantidad</label>  
+              <div class="col-2">
+                <input id="textinput" name="textinput" type="text" placeholder="3" 
+                class="form-control input-md" th:field="*{cantidad}">
               </div>
+              <span class="help-block col-md-12">Introduzca la cantidad de productos de las que disponemos</span>  
             </div>
 
-            <div class="form-group align-items-center">
+            <div class="form-group align-items-center my-2">
               <input type="submit" class="btn btn-primary" value="Enviar">
             </div>
             

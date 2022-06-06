@@ -3,10 +3,14 @@ package com.salesianostriana.dam.skateshopv1.service.base;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
+
 public interface ServicioBase<T, ID> {
 		
 		
 		public List<T> findAll();
+		
+		public List<T> findAll(Sort s);
 		
 		public Optional<T> findById(ID id);
 		

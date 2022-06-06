@@ -23,7 +23,7 @@
 
 <body>
 
-  <div class="container-fluid">
+  <header>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -63,11 +63,12 @@
         </div>
       </div>
     </nav>
+  </header>
 
 
 
-    <div class="formulario">
-      <form class="form" method="POST" th:action="@{/logIn}" sec:authorize="!isAuthenticated()">
+    <div class="formulario fondo mt-0">
+      <form class="form text-light" method="POST" th:action="@{/logIn}" sec:authorize="!isAuthenticated()">
         <p th:if="${loginError}" class="error text-danger">Error en el nombre de usuario y/o contraseña</p>
         <fieldset>
           <legend>Log In</legend>
@@ -94,13 +95,12 @@
             
         </fieldset>
       </form>
-      <div class="formulario bg-light" sec:authorize="isAuthenticated()">
-        <h3 class="text-warning">Ya esta usted registrado como</h3>
-        <h3 class="text-warning ps-2" sec:authentication="name">Nombre: </h3>
+      <div class="formulario bg-light text-center" sec:authorize="isAuthenticated()">
+        <h3 class="text-warning">Ya esta usted registrado como <span sec:authentication="name"></span></h3>
       </div>
     </div>
     
-    <footer>
+    <footer class="mt-0">
       
       <div class="row columnaBonita p-1 p-lg-3 ">
     
@@ -120,9 +120,6 @@
           <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{/media/twitter.png}" alt="twitter" class="icono"></a>
           <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{/media/instagram.png}" alt="instagram" class="icono"></a>             
         </div>
-    
-          
-      </div>
     
     </footer>
   </div>

@@ -4,9 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> implements ServicioBase<T, ID> {
+
+	@Override
+	public List<T> findAll(Sort s) {
+		return repositorio.findAll(s);
+	}
 
 	@Autowired
 	protected R repositorio;

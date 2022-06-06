@@ -3,6 +3,8 @@ package com.salesianostriana.dam.skateshopv1.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.skateshopv1.model.BuscarBean;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
 import com.salesianostriana.dam.skateshopv1.service.ProductoService;
+import com.salesianostriana.dam.skateshopv1.service.VentaService;
 
 @Controller
 public class AdminController {
@@ -25,6 +28,8 @@ public class AdminController {
 	
 	@Autowired
 	private ProductoService productoService;
+	@Autowired
+	private VentaService ventaService;
 	
 	/**
 	 * Método que permite mostrar la página de inicio y muestra que estas logeado como administrador.
@@ -69,6 +74,21 @@ public class AdminController {
 	  
 	  return "gestion";
 	  }
+	
+	//METODOS PARA GESTION DE VENTAS
+	
+	@GetMapping("/admin/ventas")
+	public String gestionVentas(Model model, @RequestParam("")) {
+		
+		model.addAttribute("ventas", ventaService.findAll());
+		
+		ventaService.findAll(Sort.by(Direction.ASC, "fecha"));
+		
+		
+//		model.addAttribute("buscarForm", new BuscarBean());
+		return "gestionVentas";
+		
+	}
 	
 	//METODOS PARA AÑADIR PRODUCTOS
 	@GetMapping("/admin/nuevoProducto")

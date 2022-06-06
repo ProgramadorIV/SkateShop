@@ -78,7 +78,7 @@ public class AdminController {
 	//METODOS PARA GESTION DE VENTAS
 	
 	@GetMapping("/admin/ventas")
-	public String gestionVentas(Model model, @RequestParam("")) {
+	public String gestionVentas( @RequestParam("") , Model model) {
 		
 		model.addAttribute("ventas", ventaService.findAll());
 		

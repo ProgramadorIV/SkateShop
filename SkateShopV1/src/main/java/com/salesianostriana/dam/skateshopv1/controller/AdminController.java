@@ -28,6 +28,7 @@ public class AdminController {
 	
 	@Autowired
 	private ProductoService productoService;
+	
 	@Autowired
 	private VentaService ventaService;
 	
@@ -77,18 +78,18 @@ public class AdminController {
 	
 	//METODOS PARA GESTION DE VENTAS
 	
-	@GetMapping("/admin/ventas")
-	public String gestionVentas( @RequestParam("") , Model model) {
-		
-		model.addAttribute("ventas", ventaService.findAll());
-		
-		ventaService.findAll(Sort.by(Direction.ASC, "fecha"));
-		
-		
+//	@GetMapping("/admin/ventas")
+//	public String gestionVentas( @RequestParam("") , Model model) {
+//		
+//		model.addAttribute("ventas", ventaService.findAll());
+//		
+//		ventaService.findAll(Sort.by(Direction.ASC, "fecha"));
+//		
+//		
 //		model.addAttribute("buscarForm", new BuscarBean());
-		return "gestionVentas";
-		
-	}
+//		return "gestionVentas";
+//		
+//	}
 	
 	//METODOS PARA AÑADIR PRODUCTOS
 	@GetMapping("/admin/nuevoProducto")

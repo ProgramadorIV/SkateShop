@@ -44,7 +44,7 @@
                 </li>
                 <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
                   <li class="nav-item"> 
-                    <a class="nav-link active" th:href="@{/admin/gestion}" sec:authorize="isAuthenticated()">Gestion</a>
+                    <a class="nav-link active" th:href="@{/admin/ventas}" sec:authorize="isAuthenticated()">Gestion</a>
                   </li>
                 </span>
                 <li class="nav-item">
@@ -58,6 +58,122 @@
           </div>
         </nav>
     </header>
+
+    <div class="row w-100 mx-0">
+      <div class="col-md-3 col-sm-12 border border-dark border-2 border-top-0 bg-white d-none d-sm-block d-sm-none d-md-block">
+        <div class="w-100 h-100 bg-white">
+          <nav class="nav flex-column border-0 position-fixed">
+            <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 m-2 mt-3">
+              <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
+              <button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
+            </form>
+            <div class="dropdown m-0">
+              <a class="btn btn-secondary dropdown-toggle m-2" role="button" data-bs-toggle="dropdown">
+                Mostrar
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
+                <li><a class="dropdown-item" href="@{/admin/gestionVentas}">Ventas</a></li>
+              </ul>              
+            </div>
+          </nav>
+        </div>
+        
+      </div>
+      <div class="d-md-none">
+        <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          Opciones de gestión
+        </a>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Gestión de ventas</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              Aquí dispone de todas las opciones para gestionar los ventas. También puede gestionar los productos si pincha en mostrar y productos.
+            </div>
+            <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 m-2 mt-3">
+              <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
+              <button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
+            </form>
+            <div class="dropdown mt-3 m-2">
+              <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdownMenuButton">
+                Mostrar
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
+                <li><a class="dropdown-item" href="@{/admin/gestionVentas}">Ventas</a></li>
+              </ul>              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+          <div class="table-responsive">
+              <table class="table align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="producto : ${productos}">
+                    <td th:text="${producto.id}"></td>
+                    <td> 
+                      <div class="envoltorioFotos">
+                        <img th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'https://clipground.com/images/picture-not-available-clipart-2.jpg'"
+                        alt="Imagen de producto" class="img-responsive w-100 h-100">
+                      </div>
+                    </td>
+                    <td th:text="${producto.nombre}"></td>
+                    <td th:text="${producto.marca}"></td>
+                    <td th:text="${producto.tipo}"></td>
+                    <td th:text="${producto.cantidad}"></td>
+                    <td th:text="${#numbers.formatCurrency(producto.precio)}"></td>
+                    <!--BOTONES DE EDITAR Y BORRAR-->
+                    <td>
+                      <a th:href="@{/admin/editarProducto/{id}(id=${producto.id})}" class="btn btn-outline-warning">Editar</a>
+                      <a th:href="@{/admin/borrarProducto/{id}(id=${producto.id})}" class="btn btn-outline-danger">Borrar</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      </div>
+    </div>
+          
+    <footer>
+          
+      <div class="row columnaBonita p-1 p-lg-3">
+          
+        <div class="col-md-4 col-xs-12">
+          <p style="font-weight: 800;">C. Condes de Bustillo, 17
+          41010 Sevilla</p>
+        </div>
+          
+        <div class="col-md-4 col-xs-12">
+          <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
+        </div>
+          
+        <div class="col-md-4 col-xs-12">
+          
+          <p style="font-weight: 800;">Contáctanos</p>
+          <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{/media/facebook.png}" alt="facebook" class="icono"></a>
+          <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{/media/twitter.png}" alt="twitter" class="icono"></a>
+          <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{/media/instagram.png}" alt="instagram" class="icono"></a>             
+        </div>
+          
+          
+      </div>
+          
+    </footer>
 
     
 </body>

@@ -9,14 +9,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> implements ServicioBase<T, ID> {
 
+	@Autowired
+	protected R repositorio;
+	
 	@Override
 	public List<T> findAll(Sort s) {
 		return repositorio.findAll(s);
 	}
-
-	@Autowired
-	protected R repositorio;
-	
 	
 	@Override
 	public List<T> findAll() {

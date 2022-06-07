@@ -78,6 +78,13 @@ public class AdminController {
 	
 	//METODOS PARA GESTION DE VENTAS
 	
+	@GetMapping("/admin/ventas")
+	public String ventas(Model model) {
+		
+		model.addAttribute("ventas", ventaService.findAll(Sort.by(Direction.ASC, "fecha")));
+		return "gestionVentas";
+	}
+	
 //	@GetMapping("/admin/ventas")
 //	public String gestionVentas( @RequestParam("") , Model model) {
 //		

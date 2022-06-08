@@ -1,9 +1,12 @@
 package com.salesianostriana.dam.skateshopv1.model;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,15 +16,15 @@ import lombok.NoArgsConstructor;
 @Data @AllArgsConstructor @NoArgsConstructor @Builder @Entity
 public class LineaVenta {
 
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	
-	@ManyToOne
-	private Producto producto;
 	
 	private int cantidad;
 	private double precio;
-	private double descuento;
+	
+	@OneToOne
+	private Producto producto;
 	
 	@ManyToOne
 	private Venta venta;

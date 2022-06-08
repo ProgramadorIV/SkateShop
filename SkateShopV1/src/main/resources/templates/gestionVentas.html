@@ -57,6 +57,9 @@
             </div>
           </div>
         </nav>
+        <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          Opciones de gestión
+        </a>
     </header>
 
     <div class="row w-100 mx-0">
@@ -73,7 +76,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                <li><a class="dropdown-item" href="@{/admin/ventas}">Ventas</a></li>
+                <li><a class="dropdown-item" th:href="@{/admin/ventas}">Ventas</a></li>
               </ul>              
             </div>
           </nav>
@@ -81,9 +84,6 @@
         
       </div>
       <div class="d-md-none">
-        <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          Opciones de gestión
-        </a>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Gestión de ventas</h5>
@@ -103,7 +103,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                <li><a class="dropdown-item" href="@{/admin/ventas}">Ventas</a></li>
+                <li><a class="dropdown-item" th:href="@{/admin/ventas}">Ventas</a></li>
               </ul>              
             </div>
           </div>
@@ -115,33 +115,19 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Tipo</th>
-                    <th>Cantidad</th>
+                    <th>Producto</th>
+                    <th>Fecha</th>
                     <th>Precio</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="producto : ${productos}">
-                    <td th:text="${producto.id}"></td>
-                    <td> 
-                      <div class="envoltorioFotos">
-                        <img th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'https://clipground.com/images/picture-not-available-clipart-2.jpg'"
-                        alt="Imagen de producto" class="img-responsive w-100 h-100">
-                      </div>
+                  <tr th:each="venta : ${ventas}">
+                    <td th:text="${venta.id}"></td>
+                    <td th:each=" producto : ${venta.listaProductos}">
+                      <td th:text="${producto.nombre}"></td>
                     </td>
-                    <td th:text="${producto.nombre}"></td>
-                    <td th:text="${producto.marca}"></td>
-                    <td th:text="${producto.tipo}"></td>
-                    <td th:text="${producto.cantidad}"></td>
-                    <td th:text="${#numbers.formatCurrency(producto.precio)}"></td>
-                    <!--BOTONES DE EDITAR Y BORRAR-->
-                    <td>
-                      <a th:href="@{/admin/editarProducto/{id}(id=${producto.id})}" class="btn btn-outline-warning">Editar</a>
-                      <a th:href="@{/admin/borrarProducto/{id}(id=${producto.id})}" class="btn btn-outline-danger">Borrar</a>
-                    </td>
+                    <td th:text="${venta.fecha}"></td>
+                    <td th:text="${venta.precio}"></td>
                   </tr>
                 </tbody>
               </table>

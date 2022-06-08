@@ -53,10 +53,17 @@
             </ul>
             <span class="navbar-text pe-4 fs-2">
               <p sec:authorize="isAuthenticated()" sec:authentication="name"></p>
-            </span>                  
+            </span>    
+            
+            
           </div>
         </div>
       </nav>
+      <div class="d-md-none">
+        <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+          Opciones de gestión
+        </a>
+      </div>
     </header>
 
 
@@ -74,7 +81,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                  <li><a class="dropdown-item" href="@{/admin/ventas}">Ventas</a></li>
+                  <li><a class="dropdown-item" th:href="@{/admin/ventas}">Ventas</a></li>
                 </ul>              
               </div>
               <div class="m-2">
@@ -88,9 +95,6 @@
         </div>
 
         <div class="d-md-none">
-          <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            Opciones de gestión
-          </a>
 
           <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
@@ -111,7 +115,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                  <li><a class="dropdown-item" href="@{/admin/ventas}">Ventas</a></li>
+                  <li><a class="dropdown-item" th:href="@{/admin/ventas}">Ventas</a></li>
                 </ul>              
               </div>
               <div class="m-2">

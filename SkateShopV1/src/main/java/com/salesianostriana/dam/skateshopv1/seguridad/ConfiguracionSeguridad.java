@@ -44,6 +44,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 	public void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http
+			.headers().frameOptions().disable().and()
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
@@ -53,6 +54,8 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter{
 			.loginProcessingUrl("/logIn").failureUrl("/logInError").permitAll()
 			.and().logout()
 			.logoutUrl("/logOut").logoutSuccessUrl("/").permitAll();
+		
+	
 	}
 	
 	

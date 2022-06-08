@@ -32,5 +32,5 @@ public class Venta {
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy="venta")
-	private List <LineaVenta> listaProductos = new ArrayList<>();
+	private List <LineaVenta> lineasVenta = new ArrayList<>();
 }

@@ -122,14 +122,14 @@
                           <th>Nombre</th>
                           <th>Cantidad</th>
                         </tr>                  
-                        <tr th:each="producto : ${venta.listaProductos}">
-                          <td th:text="${producto.nombre}"></td>
-                          <td th:text="${producto.cantidad}"></td>
+                        <tr th:each="lineaVenta : ${venta.lineasVenta}">        
+                          <td th:text="${lineaVenta.producto.nombre}"></td>
+                          <td th:text="${lineaVenta.cantidad}"></td>
                         </tr>
                       </table>            
                     </td>
                     <td th:text="${venta.fecha}"></td>
-                    <td th:text="${venta.precio}"></td>
+                    <td th:text="${venta.importe}"></td>
                   </tr>
                 </tbody>
               </table>

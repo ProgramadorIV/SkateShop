@@ -33,12 +33,12 @@ public class LineaVenta {
 	public void incluirEnVenta(Venta venta) {
 		
 		this.venta = venta;
-		venta.getListaProductos().add(this);
+		venta.getLineasVenta().add(this);
 	}
 	
 	public void quitarDeVenta(Venta venta) {
 		
-		venta.getListaProductos().remove(this);
+		venta.getLineasVenta().remove(this);
 		this.venta = null;
 	}
 	

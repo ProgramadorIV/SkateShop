@@ -57,7 +57,7 @@
             </div>
           </div>
         </nav>
-        <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <a class="btn btn-secondary w-100 d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
           Opciones de gestión
         </a>
     </header>
@@ -66,10 +66,6 @@
       <div class="col-md-3 col-sm-12 border border-dark border-2 border-top-0 bg-white d-none d-sm-block d-sm-none d-md-block">
         <div class="w-100 h-100 bg-white">
           <nav class="nav flex-column border-0 position-fixed">
-            <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 m-2 mt-3">
-              <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
-              <button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
-            </form>
             <div class="dropdown m-0">
               <a class="btn btn-secondary dropdown-toggle m-2" role="button" data-bs-toggle="dropdown">
                 Mostrar
@@ -93,10 +89,6 @@
             <div>
               Aquí dispone de todas las opciones para gestionar los ventas. También puede gestionar los productos si pincha en mostrar y productos.
             </div>
-            <form th:action="@{/admin/search}" th:object="${buscarForm}" method="POST" class="border-0 m-2 mt-3">
-              <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2 w-25"/>
-              <button class="btn btn-primary p-2 mb-1" type="submit">Filtrar</button>
-            </form>
             <div class="dropdown mt-3 m-2">
               <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdownMenuButton">
                 Mostrar
@@ -115,16 +107,26 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Producto</th>
+                    <th>Productos</th>
                     <th>Fecha</th>
                     <th>Precio</th>
                   </tr>
                 </thead>
+                
                 <tbody>
                   <tr th:each="venta : ${ventas}">
                     <td th:text="${venta.id}"></td>
-                    <td th:each=" producto : ${venta.listaProductos}">
-                      <td th:text="${producto.nombre}"></td>
+                    <td>
+                      <table>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Cantidad</th>
+                        </tr>                  
+                        <tr th:each="producto : ${venta.listaProductos}">
+                          <td th:text="${producto.nombre}"></td>
+                          <td th:text="${producto.cantidad}"></td>
+                        </tr>
+                      </table>            
                     </td>
                     <td th:text="${venta.fecha}"></td>
                     <td th:text="${venta.precio}"></td>

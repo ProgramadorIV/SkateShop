@@ -29,4 +29,17 @@ public class LineaVenta {
 	@ManyToOne
 	private Venta venta;
 	
+	
+	public void incluirEnVenta(Venta venta) {
+		
+		this.venta = venta;
+		venta.getListaProductos().add(this);
+	}
+	
+	public void quitarDeVenta(Venta venta) {
+		
+		venta.getListaProductos().remove(this);
+		this.venta = null;
+	}
+	
 }

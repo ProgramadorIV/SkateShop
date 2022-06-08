@@ -28,6 +28,7 @@ public class Venta {
 	private LocalDate fecha;
 	private double importe;
 	
+	@Builder.Default
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
 	@OneToMany(mappedBy="venta")

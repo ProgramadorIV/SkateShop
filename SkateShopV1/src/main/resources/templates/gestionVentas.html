@@ -87,7 +87,7 @@
           </div>
           <div class="offcanvas-body">
             <div>
-              Aquí dispone de todas las opciones para gestionar los ventas. También puede gestionar los productos si pincha en mostrar y productos.
+              Aquí dispone de todas las opciones para gestionar las ventas. También puede gestionar los productos si pincha en mostrar y productos.
             </div>
             <div class="dropdown mt-3 m-2">
               <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdownMenuButton">
@@ -117,7 +117,7 @@
                   <tr th:each="venta : ${ventas}">
                     <td th:text="${venta.id}"></td>
                     <td>
-                      <table>
+                      <table class="table align-middle">
                         <tr>
                           <th>Nombre</th>
                           <th>Cantidad</th>

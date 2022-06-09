@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @AllArgsConstructor @NoArgsConstructor @Builder @Entity
-public class LineaVenta {
+public class LineaVenta{
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)

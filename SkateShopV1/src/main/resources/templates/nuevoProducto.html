@@ -51,11 +51,23 @@
             </div>
 
             <div class="form-group my-3">
-              <label class="col-md-3 control-label my-2" for="textinput">Marca</label>  
+              <label class="col-md-3 control-label" for="selectinput">Marca</label>
               <div class="col-md-12">
-              <input id="textinput" name="textinput" type="text" placeholder="Independent" 
-              class="form-control input-md" th:field="*{marca}">
-              <span class="help-block">Introduzca la marca del producto</span>  
+                <select name="selectinput" id="selectinput" th:field="*{marca}">
+                  <option th:value="BD">BD</option>
+                  <option th:value="Dickies">Dickies</option>
+                  <option th:value="Element">Element</option>
+                  <option th:value="Grizzly">Grizzly</option>
+                  <option th:value="Imagine">Imagine</option>
+                  <option th:value="Independent">Independent</option>                
+                  <option th:value="Lucky Bearings">Lucky Bearings</option>
+                  <option th:value="Primitive">Primitive</option>
+                  <option th:value="Real">Real</option>
+                  <option th:value="SkateShop">SkateShop</option>
+                  <option th:value="Spitfire">Spitfire</option>
+                  <option th:value="Venture">Venture</option>
+                </select>
+                <span class="help-block">Introduzca la marca del producto</span>
               </div>
             </div>
 

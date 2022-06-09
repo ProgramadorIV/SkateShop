@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.skateshopv1.model.BuscarBean;
+import com.salesianostriana.dam.skateshopv1.model.LineaVenta;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
 import com.salesianostriana.dam.skateshopv1.service.ProductoService;
 import com.salesianostriana.dam.skateshopv1.service.VentaService;
@@ -32,6 +33,9 @@ public class AdminController {
 	@Autowired
 	private VentaService ventaService;
 	
+//	@Autowired
+//	private LineaVenta lineaVentaService;
+//	
 	/**
 	 * Método que permite mostrar la página de inicio y muestra que estas logeado como administrador.
 	 * @param model
@@ -135,6 +139,8 @@ public class AdminController {
 	@GetMapping("/admin/borrarProducto/{id}")
 	public String borrarProducto(@PathVariable("id") long id) {
 		
+		//Comprobar con el método de lineaVenta si se puede borrar o no
+//		if(lineaVentaService.)
 		productoService.deleteById(id);
 		return "redirect:/admin/gestion";
 	}

@@ -9,4 +9,5 @@ import com.salesianostriana.dam.skateshopv1.model.*;
 @Repository
 public interface LineaVentaRepository extends JpaRepository<LineaVenta, Long>{
 
+	public long countByProducto(Producto p);
 }

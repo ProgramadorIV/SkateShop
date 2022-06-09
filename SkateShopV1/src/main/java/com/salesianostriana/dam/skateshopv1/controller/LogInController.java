@@ -26,7 +26,7 @@ public class LogInController {
 	}
 	
 	/**
-	 * Método que asigna el valor true a la variable logInError.
+	 * Método que asigna el valor true a la variable loginError.
 	 * @param model
 	 * @return string de la página de inicio de sesión.
 	 */

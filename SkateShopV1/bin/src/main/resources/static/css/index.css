@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "urban";
+    src: url(../font/UrbanJungleDEMO.otf);
+}
+
+nav{
+    border: 2px solid black;
+    font-family: "urban";
+}
+
+.botonBonito{
+
+    margin: 0 auto;
+}
+
+.columnaBonita{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.icono{
+
+    margin-left: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.formulario{
+
+    width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    word-spacing: 4px;
+    font-family: "urban";
+    
+}
+
+.fondo{
+
+    background-image: url("../media/fondoInicio.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+
+}
+
+.cambiarFuente input{
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form{
+    color: grey;
+    padding: 10px;
+    margin-top: 50px;
+    border: 3px solid white;
+    border-radius: 8px;
+    background-color: #00000057;
+    
+}
+
+footer{
+
+    width: 100%;
+    margin-top: 10px;
+    background-color: #ccc;
+
+}
+.card{
+    background-color: white !important;
+}
+
+.card-header{
+
+    border-bottom: none;
+    width: 100%;
+    height: 100%;
+
+}
+
+.card-header>img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.img-responsive{
+    object-fit: contain;
+}
+
+.envoltorioFotos{
+
+    width: 100px;
+    height: 200px;
+}

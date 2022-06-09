@@ -55,9 +55,6 @@
               </div>
             </div>
         </nav>
-        <a class="btn btn-secondary w-100" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-          Carrito
-        </a>
         <div class="col-12 bg-secondary mb-3 p-4">
           <form th:action="@{search}" th:object="${buscarForm}" method="POST" class="border-0 w-50">
             <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2"/>
@@ -65,29 +62,6 @@
           </form>
         </div>
       </header>
-
-      <div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <div>
-              Todos los productos que eligio, no podrá comprarlos hasta logear.
-            </div>
-            <div class="dropdown mt-3 m-2">
-              <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdownMenuButton">
-                Mostrar
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                <li><a class="dropdown-item" th:href="@{/admin/ventas}">Ventas</a></li>
-              </ul>              
-            </div>
-          </div>
-        </div>
-      </div>
         <!--ESTA ES LA WENAAAA-->
         <div class="row">
           <div class="col-sm-3 mb-3" th:each="producto : ${productos}">

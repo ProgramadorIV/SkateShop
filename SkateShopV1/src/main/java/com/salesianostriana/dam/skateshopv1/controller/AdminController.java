@@ -2,6 +2,7 @@ package com.salesianostriana.dam.skateshopv1.controller;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.skateshopv1.model.BuscarBean;
-import com.salesianostriana.dam.skateshopv1.model.LineaVenta;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
+import com.salesianostriana.dam.skateshopv1.service.LineaVentaService;
 import com.salesianostriana.dam.skateshopv1.service.ProductoService;
 import com.salesianostriana.dam.skateshopv1.service.VentaService;
 
@@ -33,9 +34,9 @@ public class AdminController {
 	@Autowired
 	private VentaService ventaService;
 	
-//	@Autowired
-//	private LineaVenta lineaVentaService;
-//	
+	@Autowired
+	private LineaVentaService lineaVentaService;
+	
 	/**
 	 * Método que permite mostrar la página de inicio y muestra que estas logeado como administrador.
 	 * @param model
@@ -137,12 +138,17 @@ public class AdminController {
 	//METODO PARA BORRAR PRODUCTOS
 	
 	@GetMapping("/admin/borrarProducto/{id}")
-	public String borrarProducto(@PathVariable("id") long id) {
+	public String borrarProducto(@PathVariable("id") long id, Model model) {
 		
-		//Comprobar con el método de lineaVenta si se puede borrar o no
-//		if(lineaVentaService.)
-		productoService.deleteById(id);
+		if(lineaVentaService.esProductoBorrable(productoService.findById(id).get())) 
+			model.addAttribute("borrarError", true);
+			
+		else
+			productoService.deleteById(id);
+		
 		return "redirect:/admin/gestion";
 	}
+	
+	
 	
 }

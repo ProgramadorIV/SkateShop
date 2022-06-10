@@ -138,11 +138,11 @@ public class AdminController {
 	//METODO PARA BORRAR PRODUCTOS
 	
 	@GetMapping("/admin/borrarProducto/{id}")
-	public String borrarProducto(@PathVariable("id") long id, Model model) {
+	public String borrarProducto(@PathVariable("id") long id) {
 		
 		if(lineaVentaService.esProductoBorrable(productoService.findById(id).get())) 
-			model.addAttribute("borrarError", true);
-			
+			return "redirect:/admin/gestion/?error=true";
+		
 		else
 			productoService.deleteById(id);
 		

@@ -12,7 +12,7 @@ public interface ServicioBase<T, ID> {
 		
 		public List<T> findAll(Sort s);
 		
-		public Optional<T> findById(ID id);
+		public T findById(ID id);
 		
 		public T save(T a);
 		

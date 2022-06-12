@@ -124,7 +124,7 @@ public class AdminController {
 	@GetMapping("/admin/editarProducto/{id}")
 	public String editarProducto(@PathVariable("id") long id, Model model) {
 
-		model.addAttribute("producto", productoService.findById(id).get());
+		model.addAttribute("producto", productoService.findById(id));
 		return "nuevoProducto";
 	}
 	
@@ -140,7 +140,7 @@ public class AdminController {
 	@GetMapping("/admin/borrarProducto/{id}")
 	public String borrarProducto(@PathVariable("id") long id) {
 		
-		if(lineaVentaService.esProductoBorrable(productoService.findById(id).get())) 
+		if(lineaVentaService.esProductoBorrable(productoService.findById(id))) 
 			return "redirect:/admin/gestion/?error=true";
 		
 		else

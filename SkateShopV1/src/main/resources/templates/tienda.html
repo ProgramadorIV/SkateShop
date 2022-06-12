@@ -57,25 +57,22 @@
               </div>
             </div>
         </nav>
-      
-        <div class="row">
           <div class="col-12 bg-secondary mb-3 p-4">
             <div class="row">
               <div class="col-6">
-                <form th:action="@{search}" th:object="${buscarForm}" method="POST" class="border-0 w-50">
+                <form th:action="@{search}" th:object="${buscarForm}" method="POST" class="border-0">
                   <input type="text" name="nombre" placeholder="Buscar" th:field="*{busqueda}" class="ml-1 p-2"/>
                   <button class="btn btn-primary p-2" type="submit">Filtrar</button>
                 </form>
               </div>
-              <div class="col-6 text-align-end">
-                <a class="btn btn-secondary px-3 py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <div class="col-6 text-end pe-4">
+                <a class="btn btn-outline-success px-3 py-2 border-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                   <i class="bi bi-cart"></i>
                 </a>
               </div>
             </div>
-            
           </div>
-        </div>
+        
       </header>
 
       <div>
@@ -88,15 +85,20 @@
             <div>
               Todos los productos que eligio, no podrá comprarlos hasta logear.
             </div>
-            <div class="dropdown mt-3 m-2">
-              <a class="btn btn-secondary dropdown-toggle" role="button" data-bs-toggle="dropdown" id="dropdownMenuButton">
-                Mostrar
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" th:href="@{/admin/gestion}">Productos</a></li>
-                <li><a class="dropdown-item" th:href="@{/admin/ventas}">Ventas</a></li>
-              </ul>              
-            </div>
+            <div class="table-responsive mt-4">
+              <table class="table-align-middle">
+                <thead>
+                  <th>Producto</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>                
+                </thead>
+                <tbody>
+                  <tr>hola</tr>
+                  <tr>adios</tr>
+                  <tr>adios</tr>
+                </tbody>
+              </table>
+            </div>              
           </div>
         </div>
       </div>

@@ -23,9 +23,10 @@ public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> im
 	}
 
 	@Override
-	public Optional<T> findById(ID id) {
-		return repositorio.findById(id);
+	public T findById(ID id) {
+		return repositorio.findById(id).orElse(null);
 	}
+	
 
 	@Override
 	public T save(T a) {

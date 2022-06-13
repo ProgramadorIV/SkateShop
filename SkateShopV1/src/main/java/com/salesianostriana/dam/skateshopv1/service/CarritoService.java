@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.skateshopv1.service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,9 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.salesianostriana.dam.skateshopv1.model.LineaVenta;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
+import com.salesianostriana.dam.skateshopv1.model.Venta;
 import com.salesianostriana.dam.skateshopv1.repository.LineaVentaRepository;
 import com.salesianostriana.dam.skateshopv1.repository.ProductoRepository;
 import com.salesianostriana.dam.skateshopv1.repository.VentaRepository;
@@ -28,6 +31,9 @@ public class CarritoService {
 	@Autowired
 	VentaService ventaService;
 	
+	@Autowired 
+	ProductoRepository productoRepository;
+	
 	private Map<Producto, Integer> productosEnCarrito = new HashMap<>();
 	
 	public void meterProductoEnCarritoCheckOut(Producto p) {
@@ -42,7 +48,7 @@ public class CarritoService {
 		
 		Producto p = productoService.findById(id);
 		
-		if(p != null)
+		if(p!=null)
 			meterProductoEnCarritoCheckOut(p);
 		
 	}
@@ -56,7 +62,7 @@ public class CarritoService {
 		
 		Producto p = productoService.findById(id);
 		
-		if(p != null)
+		if(p!=null)
 			quitarProductoDeCarritoCheckOut(p);
 			
 	}
@@ -79,5 +85,18 @@ public class CarritoService {
 	public void limpiarCarrito() {
 		
 		productosEnCarrito.clear();
+	}
+	
+	public void finalizarCarrito() {
+		
+		
+		java.util.List<LineaVenta> lineaVenta = new ArrayList<>();
+		Venta venta;
+		
+		
+		
+		
+		productoRepository.flush();
+		limpiarCarrito();
 	}
 }

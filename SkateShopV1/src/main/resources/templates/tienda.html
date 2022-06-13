@@ -66,7 +66,7 @@
                 </form>
               </div>
               <div class="col-6 text-end pe-4">
-                <a class="btn btn-outline-success px-3 py-2 border-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                <a class="btn btn-success px-3 py-2 border-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                   <i class="bi bi-cart"></i>
                 </a>
               </div>
@@ -90,12 +90,20 @@
                 <thead>
                   <th>Producto</th>
                   <th>Cantidad</th>
+                  <th>Precio Ud.</th>
                   <th>Subtotal</th>                
                 </thead>
                 <tbody>
-                  <tr>hola</tr>
-                  <tr>adios</tr>
-                  <tr>adios</tr>
+                  <tr th:each=" lineaVenta : ${carrito}">          
+                    <td th:text="${lineasVenta.key.nombre}"></td>
+                    <td th:text="${lineaVenta.value}"></td>
+                    <td th:text="${#numbers.formatCurrency(lineaVenta.key.precio)}"></td>
+                    <td th:text="${#numbers.formatCurrency(lineaVenta.key.precio * lineaVenta.value)}"></td>
+                    <td><a class="btn btn-secondary" th:href="@{/quitarDeCarrito/{id}(id = ${lineaVenta.key.id})}"></a></td>
+                  </tr>
+                  <tr>
+                    <td th:text="${#numbers.formatCurrency(precioFinal)}"></td>
+                  </tr>
                 </tbody>
               </table>
             </div>              
@@ -112,7 +120,7 @@
                 <p class="font-weight-bold text-primary text-center" th:text="${#numbers.formatCurrency(producto.precio)}"><p>
               </div>
               <!--Aquí me falta añadir el boton de comprar que mandará al carrito.html-->
-              <a href="" class="btn btn-primary text-center">Comprar</a>
+              <a th:href="@{meterEnCarrito/{id}(id = ${producto.id})}" class="btn btn-primary text-center">Añadir al carrito</a>
             </div>
           </div>
         </div>

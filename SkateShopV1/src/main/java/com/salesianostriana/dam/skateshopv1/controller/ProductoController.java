@@ -31,28 +31,28 @@ public class ProductoController {
 	 * @param model
 	 * @return String de la pagina tienda.
 	 */	
-	@GetMapping("/tienda")
-	public String mostrarProductos(Model model) {
-		
-		model.addAttribute("productos", service.findAll());
-
-		model.addAttribute("buscarForm", new BuscarBean());
-		return "tienda";
-	}
-	
-	/**
-	 * 
-	 * @param buscarBean
-	 * @param model
-	 * @return String de la pagina tienda.
-	 */	
-	@PostMapping("/search")
-	  public String searchProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean,
-			 Model model){
-	  	model.addAttribute("productos", service.findByNombre(buscarBean.getBusqueda()));
-	  
-	  return "tienda";
-	  }
+//	@GetMapping("/tienda")
+//	public String mostrarProductos(Model model) {
+//		
+//		model.addAttribute("productos", service.findAll());
+//
+//		model.addAttribute("buscarForm", new BuscarBean());
+//		return "tienda";
+//	}
+//	
+//	/**
+//	 * 
+//	 * @param buscarBean
+//	 * @param model
+//	 * @return String de la pagina tienda.
+//	 */	
+//	@PostMapping("/search")
+//	  public String searchProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean,
+//			 Model model){
+//	  	model.addAttribute("productos", service.findByNombre(buscarBean.getBusqueda()));
+//	  
+//	  return "tienda";
+//	  }
 
 //	@PostMapping("/mixedSearch")
 //	  public String searchProductoV2(@ModelAttribute("buscarForm") BuscarBean buscarBean,

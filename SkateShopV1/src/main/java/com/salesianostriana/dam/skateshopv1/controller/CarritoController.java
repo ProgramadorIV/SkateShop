@@ -21,22 +21,6 @@ public class CarritoController {
 	@Autowired
 	ProductoService productoService;
 	
-	@GetMapping("/tienda")
-	public String mostrarProductos(Model model) {
-		
-		model.addAttribute("productos", productoService.findAll());
-
-		model.addAttribute("buscarForm", new BuscarBean());
-		return "tienda";
-	}
-	
-	@PostMapping("/search")
-	  public String searchProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean,
-			 Model model){
-	  	model.addAttribute("productos", productoService.findByNombre(buscarBean.getBusqueda()));
-	  
-	  return "tienda";
-	}
 	
 	@GetMapping("/meterEnCarrito/{id}")
 	public String meterEnCarrito(@PathVariable("id") long id) {
@@ -45,18 +29,28 @@ public class CarritoController {
 		return "redirect:/tienda";
 	}
 	
-	@GetMapping("/carrito")
-	public String meterCarritoEnVista(Model model) {
+	@GetMapping("/tienda")
+	public String mostrarCarrito(Model model) {
 		
+		model.addAttribute("productos", productoService.findAll());
+		model.addAttribute("buscarForm", new BuscarBean());
 		model.addAttribute("carrito", carritoService.getCarrito());
 		model.addAttribute("precioFinal", carritoService.calcularTotalCarrito());
-		return "redirect:/tienda";
+		return "tienda";
 	}
 	
 	@GetMapping("/quitarDeCarrito/{id}")
 	public String quitarDeCarrito(@PathVariable ("id") long id) {
 		
-		carritoService.quitarProductoDeCarrito(id);
+		carritoService.quitarProducto(id);
+		return "redirect:/tienda";
+	}
+	
+	
+	@GetMapping("/quitarUnidad/{id}")
+	public String quitarUnidad(@PathVariable ("id") long id) {
+		
+		carritoService.quitarUnidadProducto(id);
 		return "redirect:/tienda";
 	}
 	

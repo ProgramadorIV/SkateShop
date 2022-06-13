@@ -67,7 +67,7 @@
               </div>
               <div class="col-6 text-end pe-4">
                 <a class="btn btn-success px-3 py-2 border-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                  <i class="bi bi-cart"></i>
+                  <i class="bi bi-cart fs-4"></i>
                 </a>
               </div>
             </div>
@@ -76,7 +76,7 @@
       </header>
 
       <div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -85,25 +85,38 @@
             <div>
               Todos los productos que eligio, no podrá comprarlos hasta logear.
             </div>
-            <div class="table-responsive mt-4">
+            <div class="table-responsive mt-4 text-nowrap">
               <table class="table-align-middle">
                 <thead>
-                  <th>Producto</th>
-                  <th>Cantidad</th>
-                  <th>Precio Ud.</th>
-                  <th>Subtotal</th>                
+                  <th class="pt-3 pe-3">Producto</th>
+                  <th class="pt-3 pe-3">Cantidad</th>
+                  <th class="pt-3 pe-3">Precio Ud.</th>
+                  <th class="pt-3 pe-3">Subtotal</th>                
                 </thead>
                 <tbody>
-                  <tr th:each=" lineaVenta : ${carrito}">          
-                    <td th:text="${lineasVenta.key.nombre}"></td>
-                    <td th:text="${lineaVenta.value}"></td>
-                    <td th:text="${#numbers.formatCurrency(lineaVenta.key.precio)}"></td>
-                    <td th:text="${#numbers.formatCurrency(lineaVenta.key.precio * lineaVenta.value)}"></td>
-                    <td><a class="btn btn-secondary" th:href="@{/quitarDeCarrito/{id}(id = ${lineaVenta.key.id})}"></a></td>
+                  <tr th:each="lineaVenta : ${carrito}">          
+                    <td class="pe-5 pt-3" th:text="${lineaVenta.key.nombre}"></td>
+                    <td class="pe-5 pt-3">
+                      <span th:text="${lineaVenta.value}" class="me-4"></span>
+                      <a class="btn btn-danger me-1" th:href="@{/quitarUnidad/{id}(id = ${lineaVenta.key.id})}">
+                        <i class="bi bi-cart-dash fs-5"></i>
+                      </a>
+                      <a class="btn btn-primary" th:href="@{meterEnCarrito/{id}(id = ${lineaVenta.key.id})}">
+                        <i class="bi bi-cart-plus fs-5"></i>
+                      </a>
+                    </td>
+                    <td class="pe-5 pt-3" th:text="${#numbers.formatCurrency(lineaVenta.key.precio)}"></td>
+                    <td class="pe-5 pt-3" th:text="${#numbers.formatCurrency(lineaVenta.key.precio * lineaVenta.value)}"></td>
+                    <td class="pe-5 pt-3"><a class="btn btn-secondary" th:href="@{/quitarDeCarrito/{id}(id = ${lineaVenta.key.id})}"><i class="bi bi-trash fs-5"></i></a></td>
                   </tr>
                   <tr>
-                    <td th:text="${#numbers.formatCurrency(precioFinal)}"></td>
+                    <td class="pt-4 ps-2" colspan=3><strong >Total: <span th:text="${#numbers.formatCurrency(precioFinal)}"></span></strong></td>
+                  </tr> 
+                  <!--Añadir boton de finalizar compra. Si no estas logeado al login, si lo estas al checkOut-->
+                  <tr>
+                    <td colspan=2></td>
                   </tr>
+                  
                 </tbody>
               </table>
             </div>              
@@ -141,9 +154,15 @@
             <div class="col-md-4 col-xs-12">
         
               <p style="font-weight: 800;">Contáctanos</p>
-              <a href="https://es-la.facebook.com/ThrasherMagazine/"> <img src="../static/media/facebook.png" th:src="@{/media/facebook.png}" alt="facebook" class="icono"></a>
-              <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="../static/media/twitter.png" th:src="@{/media/twitter.png}" alt="twitter" class="icono"></a>
-              <a href="https://www.instagram.com/a_nt0ni_0/"><img src="../static/media/instagram.png" th:src="@{/media/instagram.png}" alt="instagram" class="icono"></a>             
+              <a href="https://es-la.facebook.com/ThrasherMagazine/" class="me-3">
+                <i class="bi bi-facebook fs-4"></i>
+              </a>
+              <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="me-3">
+                <i class="bi bi-twitter fs-4"></i>
+              </a>
+              <a href="https://www.instagram.com/a_nt0ni_0/" class="me-3">
+                <i class="bi bi-instagram fs-4"></i>
+              </a>             
             </div>
         
               

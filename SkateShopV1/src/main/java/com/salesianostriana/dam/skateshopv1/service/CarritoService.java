@@ -53,18 +53,31 @@ public class CarritoService {
 		
 	}
 	
-	public void quitarProductoDeCarritoCheckOut(Producto p) {
+	public void quitarUnidadProductoCheckOut(Producto p) {
 		
-		productosEnCarrito.remove(p);
+		if(productosEnCarrito.get(p)==1)
+			productosEnCarrito.remove(p);
+		else
+			productosEnCarrito.replace(p, productosEnCarrito.get(p)-1);
+			
 	}
 	
-	public void quitarProductoDeCarrito(Long id) {
+	public void quitarUnidadProducto(Long id) {
 		
 		Producto p = productoService.findById(id);
 		
 		if(p!=null)
-			quitarProductoDeCarritoCheckOut(p);
+			quitarUnidadProductoCheckOut(p);
 			
+	}
+	
+	public void quitarProducto(long id) {
+		
+		Producto p = productoService.findById(id);
+		
+		if(p!=null) {
+			productosEnCarrito.remove(p);
+		}
 	}
 	
 	public double calcularTotalCarrito() {
@@ -93,7 +106,10 @@ public class CarritoService {
 		java.util.List<LineaVenta> lineaVenta = new ArrayList<>();
 		Venta venta;
 		
-		
+		for(Map.Entry<Producto, Integer> miCarro : productosEnCarrito.entrySet()) {
+			
+				
+		}
 		
 		
 		productoRepository.flush();

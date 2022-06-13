@@ -149,6 +149,12 @@ public class AdminController {
 		return "redirect:/admin/gestion";
 	}
 	
+//	@GetMapping("/admin/nuevaVenta")
+//	
+//	public String {
+//		
+//	}
+	
 	
 	
 }

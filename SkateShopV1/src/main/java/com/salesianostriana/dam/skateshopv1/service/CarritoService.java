@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.skateshopv1.service;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +14,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.salesianostriana.dam.skateshopv1.model.LineaVenta;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
 import com.salesianostriana.dam.skateshopv1.model.Venta;
-import com.salesianostriana.dam.skateshopv1.repository.LineaVentaRepository;
-import com.salesianostriana.dam.skateshopv1.repository.ProductoRepository;
-import com.salesianostriana.dam.skateshopv1.repository.VentaRepository;
 
 @Service
 @Scope (value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -30,9 +27,6 @@ public class CarritoService {
 	
 	@Autowired
 	VentaService ventaService;
-	
-	@Autowired 
-	ProductoRepository productoRepository;
 	
 	private Map<Producto, Integer> productosEnCarrito = new HashMap<>();
 	
@@ -100,19 +94,62 @@ public class CarritoService {
 		productosEnCarrito.clear();
 	}
 	
+	public void modificarStock(Producto p, int unidades) {
+		
+		p.setCantidad(p.getCantidad()-unidades);
+	}
+	
+	public boolean comprobarStock(Producto p, int unidades) {
+	
+		if((p.getCantidad()-unidades) >= 0)
+			return true;
+		else
+			return false;
+	}
+	
 	public void finalizarCarrito() {
 		
-		
-		java.util.List<LineaVenta> lineaVenta = new ArrayList<>();
+		LineaVenta lineaVenta;
 		Venta venta;
+		double totalAux=0;
 		
-		for(Map.Entry<Producto, Integer> miCarro : productosEnCarrito.entrySet()) {
+		if(calcularTotalCarrito()>0) {
 			
+			venta = Venta.builder()
+					.fecha(LocalDate.now())
+					.build();
+			
+			ventaService.save(venta);
+					
+			for(Producto p : productosEnCarrito.keySet()) {
 				
+				Integer i = productosEnCarrito.get(p);
+				
+				if(comprobarStock(p, i)) {
+					
+					lineaVenta = LineaVenta.builder()
+						.cantidad(i)
+						.precio(p.getPrecio()*i)
+						.producto(p)
+						.build();
+					
+					lineaVenta.incluirEnVenta(venta);
+					
+					lineaVentaService.save(lineaVenta);
+					totalAux+= p.getPrecio()*i;
+				}
+				
+			}
+			
+			if(totalAux>0) {
+				venta.setImporte(totalAux);
+				ventaService.edit(venta);
+			}
+			else {
+				ventaService.delete(venta);
+			}			
+			
+			limpiarCarrito();
 		}
-		
-		
-		productoRepository.flush();
-		limpiarCarrito();
 	}
 }

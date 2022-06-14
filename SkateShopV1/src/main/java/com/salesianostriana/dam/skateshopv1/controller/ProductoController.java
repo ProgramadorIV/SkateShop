@@ -26,6 +26,13 @@ public class ProductoController {
 	@Autowired
 	private ProductoService service;
 	
+	@GetMapping("/tienda")
+	public String mostrarCarrito(Model model) {
+		model.addAttribute("productos", service.findAll());
+		model.addAttribute("buscarForm", new BuscarBean());
+		return "tienda";
+	}
+	
 	@PostMapping("/search")
 	  public String searchProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean,
 			 Model model){

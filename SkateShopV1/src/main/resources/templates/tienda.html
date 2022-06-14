@@ -65,64 +65,16 @@
                   <button class="btn btn-primary p-2" type="submit">Filtrar</button>
                 </form>
               </div>
-              <div class="col-6 text-end pe-4">
-                <a class="btn btn-success px-3 py-2 border-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+              <div class="col-6 text-end">
+                <a class="btn btn-success px-3 py-2 border-2" th:href="@{/carrito}">
                   <i class="bi bi-cart fs-4"></i>
                 </a>
-              </div>
+              </div>  
             </div>
           </div>
         
       </header>
 
-      <div>
-        <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <div>
-              Todos los productos que eligio, no podrá comprarlos hasta logear.
-            </div>
-            <div class="table-responsive mt-4 text-nowrap">
-              <table class="table-align-middle">
-                <thead>
-                  <th class="pt-3 pe-3">Producto</th>
-                  <th class="pt-3 pe-3">Cantidad</th>
-                  <th class="pt-3 pe-3">Precio Ud.</th>
-                  <th class="pt-3 pe-3">Subtotal</th>                
-                </thead>
-                <tbody>
-                  <tr th:each="lineaVenta : ${carrito}">          
-                    <td class="pe-5 pt-3" th:text="${lineaVenta.key.nombre}"></td>
-                    <td class="pe-5 pt-3">
-                      <span th:text="${lineaVenta.value}" class="me-4"></span>
-                      <a class="btn btn-danger me-1" th:href="@{/quitarUnidad/{id}(id = ${lineaVenta.key.id})}">
-                        <i class="bi bi-cart-dash fs-5"></i>
-                      </a>
-                      <a class="btn btn-primary" th:href="@{meterEnCarrito/{id}(id = ${lineaVenta.key.id})}">
-                        <i class="bi bi-cart-plus fs-5"></i>
-                      </a>
-                    </td>
-                    <td class="pe-5 pt-3" th:text="${#numbers.formatCurrency(lineaVenta.key.precio)}"></td>
-                    <td class="pe-5 pt-3" th:text="${#numbers.formatCurrency(lineaVenta.key.precio * lineaVenta.value)}"></td>
-                    <td class="pe-5 pt-3"><a class="btn btn-secondary" th:href="@{/quitarDeCarrito/{id}(id = ${lineaVenta.key.id})}"><i class="bi bi-trash fs-5"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td class="pt-4 ps-2" colspan=3><strong >Total: <span th:text="${#numbers.formatCurrency(precioFinal)}"></span></strong></td>
-                  </tr> 
-                  <!--Añadir boton de finalizar compra. Si no estas logeado al login, si lo estas al checkOut-->
-                  <tr>
-                    <td colspan=2></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </div>              
-          </div>
-        </div>
-      </div>
         <!--ESTA ES LA WENAAAA-->
         <div class="row">
           <div class="col-sm-3 mb-3" th:each="producto : ${productos}">
@@ -133,7 +85,7 @@
                 <p class="font-weight-bold text-primary text-center" th:text="${#numbers.formatCurrency(producto.precio)}"><p>
               </div>
               <!--Aquí me falta añadir el boton de comprar que mandará al carrito.html-->
-              <a th:href="@{meterEnCarrito/{id}(id = ${producto.id})}" class="btn btn-primary text-center">Añadir al carrito</a>
+              <a th:href="@{/tienda/meterEnCarrito/{id}(id = ${producto.id})}" class="btn btn-primary text-center">Añadir al carrito</a>
             </div>
           </div>
         </div>

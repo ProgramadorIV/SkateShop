@@ -30,6 +30,7 @@ public class Venta {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fecha;
 	private double importe;
+	private String nombreUsuario;
 	
 	@Builder.Default
 	@EqualsAndHashCode.Exclude

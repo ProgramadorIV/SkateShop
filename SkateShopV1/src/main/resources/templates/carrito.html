@@ -65,8 +65,22 @@
 
       <div class="formularioSinFuente fondo mt-0">
 
-        <div class="table-responsive mt-5 text-nowrap form text-white">
-            <table class="table-align-middle">
+        <!--MENSAJE DE QUE NO SE COMPRARÁ HASTA LOGEARSE Y DE QUE NO SE COMPRA PRODUCTO QUE NO ESTA EN STOCK.-->
+      
+        <div class="table-responsive mt-5 form text-white mb-5 px-5">
+
+            <h3 class="text-center text-info my-5 fuente">Carrito</h3>
+            <div class="w-100">
+              <p class="text-white">Atención:</p>
+              <ul class="text-white mt-2">
+                <li>No podrá finalizar la compra hasta que esté logeado.</li>
+                <li>Si en el momento de finalizar la compra no se dispone de las unidades suficientes para un producto, este se eliminará del carrito.</li>
+              </ul>
+            </div>
+            <div th:if="${carrito.empty}" class="text-center text-warning mt-5">
+              <h4 class="fuente">NO HAY PRODUCTOS EN EL CARRITO</h4>
+            </div>
+            <table th:unless="${carrito.empty}" class="table-align-middle text-nowrap m-auto">
               <thead>
                 <th class="pt-3 pe-3">Producto</th>
                 <th class="pt-3 pe-3">Cantidad</th>
@@ -90,15 +104,12 @@
                   <td class="pe-5 pt-3"><a class="btn btn-secondary" th:href="@{/quitarDeCarrito/{id}(id = ${lineaVenta.key.id})}"><i class="bi bi-trash fs-5"></i></a></td>
                 </tr>
                 <tr>
-                  <td class="pt-4 ps-2" colspan=3><strong >Total: <span th:text="${#numbers.formatCurrency(precioFinal)}"></span></strong></td>
-                </tr> 
-                <!--Añadir boton de finalizar compra. Si no estas logeado al login, si lo estas al checkOut-->
-                <tr>
-                  <td colspan=2>
-                    <a class="btn btn-success" th:href="@{/user/comprarCarrito}">
-                        <i class="bi bi-money fs-5"></i>
+                  <td class="pt-4 ps-2" colspan=4><strong >Total: <span th:text="${#numbers.formatCurrency(precioFinal)}"></span></strong></td>
+                  <td>
+                    <a class="btn btn-success me-3 mt-3" th:href="@{/user/comprarCarrito}">
+                        <i class="bi bi-cash-coin fs-5"></i>
                     </a>
-                  </td>
+                  </td>                
                 </tr>
                 
               </tbody>
@@ -107,7 +118,7 @@
 
       </div>
 
-      <footer>
+      <footer class="mt-0">
       
         <div class="row columnaBonita p-1 p-lg-3 ">
       

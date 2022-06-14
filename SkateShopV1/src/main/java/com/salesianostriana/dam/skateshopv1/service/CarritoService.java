@@ -8,12 +8,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.salesianostriana.dam.skateshopv1.model.LineaVenta;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
 import com.salesianostriana.dam.skateshopv1.model.Venta;
+import com.salesianostriana.dam.skateshopv1.seguridad.RepositorioUsuario;
 
 @Service
 @Scope (value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -27,6 +29,9 @@ public class CarritoService {
 	
 	@Autowired
 	VentaService ventaService;
+	
+	@Autowired
+	RepositorioUsuario repositorioUsuario;
 	
 	private Map<Producto, Integer> productosEnCarrito = new HashMap<>();
 	
@@ -97,6 +102,7 @@ public class CarritoService {
 	public void modificarStock(Producto p, int unidades) {
 		
 		p.setCantidad(p.getCantidad()-unidades);
+		
 	}
 	
 	public boolean comprobarStock(Producto p, int unidades) {
@@ -113,10 +119,11 @@ public class CarritoService {
 		Venta venta;
 		double totalAux=0;
 		
-		if(calcularTotalCarrito()>0) {
+		if(!productosEnCarrito.isEmpty()) {
 			
 			venta = Venta.builder()
 					.fecha(LocalDate.now())
+					.nombreUsuario(SecurityContextHolder.getContext().getAuthentication().getName())
 					.build();
 			
 			ventaService.save(venta);
@@ -126,6 +133,9 @@ public class CarritoService {
 				Integer i = productosEnCarrito.get(p);
 				
 				if(comprobarStock(p, i)) {
+					
+					modificarStock(p, i);
+					productoService.edit(p);
 					
 					lineaVenta = LineaVenta.builder()
 						.cantidad(i)

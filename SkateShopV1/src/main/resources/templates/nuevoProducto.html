@@ -1,147 +1,160 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de producto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
     integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
     crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+  
+  <script defer src="../static/js/validacion.js" th:src="@{/js/validacion.js}"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
+
 <body class="fondo">
 
-    <!--FALTA HACER QUE LOS INPUT DE NÚMEROS SEAN MÁS CHICOS Y LOS DE TEXTOS Y LAS AYUDAS DE TODO EL ESPACIO.-->
+  <div class="formulario cambiarFuente my-4 h-auto">
 
-    <div class="formulario cambiarFuente">
+    <form class="form text-light "
+      th:action="${producto.id != 0} ? @{/admin/editarProducto/submit} : @{/admin/nuevoProducto/submit}"
+      th:object="${producto}" method="POST" id="formulario" onsubmit="return revisarTodoElFormulario();" 
+      data-aos="zoom-in">
+      <fieldset>
 
-        <form class="form text-light" th:action="${producto.id != 0} ? @{/admin/editarProducto/submit} : @{/admin/nuevoProducto/submit}" 
-        th:object="${producto}" method="POST">
-            <fieldset>
-            
-            <!-- Form Name -->
-            <legend th:text="${producto.id !=0 } ? 'Modificar producto' : 'Nuevo producto' "></legend>
-            
-            <input th:if="${producto.id != 0}" name="id" type="hidden" th:field="*{id}" />
-            <!-- Text input-->
-            <div class="form-group my-3">
-              <label class="col-md-3 control-label my-2" for="textinput">Nombre</label>  
-              <div class="col-md-12">
-              <input id="textinput" name="textinput" type="text" placeholder="Nombre" 
-              class="form-control input-md" th:field="*{nombre}">
-              <span class="help-block">Introduzca el nombre del producto</span>  
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group my-3">
-              <label class="col-md-3 control-label my-2" for="textinput">Imagen</label>  
-              <div class="col-md-12">
-              <input id="textinput" name="textinput" type="text" placeholder="http://......" 
-              class="form-control input-md" th:field="*{imagen}">
-              <span class="help-block">Introduzca la url del producto</span>  
-              </div>
-            </div>
+        <legend th:text="${producto.id !=0 } ? 'Modificar producto' : 'Nuevo producto' "></legend>
 
-            <div class="form-group my-3">
-              <label class="col-md-3 control-label" for="selectinput">Marca</label>
-              <div class="col-md-12">
-                <select name="selectinput" id="selectinput" th:field="*{marca}">
-                  <option th:value="BD">BD</option>
-                  <option th:value="Dickies">Dickies</option>
-                  <option th:value="Element">Element</option>
-                  <option th:value="Grizzly">Grizzly</option>
-                  <option th:value="Imagine">Imagine</option>
-                  <option th:value="Independent">Independent</option>                
-                  <option th:value="LuckyBearings">Lucky Bearings</option>
-                  <option th:value="Primitive">Primitive</option>
-                  <option th:value="Real">Real</option>
-                  <option th:value="SkateShop">SkateShop</option>
-                  <option th:value="Spitfire">Spitfire</option>
-                  <option th:value="Venture">Venture</option>
-                </select>
-                <span class="help-block">Introduzca la marca del producto</span>
-              </div>
-            </div>
+        <input th:if="${producto.id != 0}" name="id" type="hidden" th:field="*{id}" />
 
-            <!-- Multiple Radios -->
-            <div class="form-group my-3">
-              <label class="col-md-3 control-label my-2" for="radios">Tipo</label>
-              <div class="col-md-4">
-              <div class="radio">
-                <label for="radios-0">
-                  <input type="radio" name="radios" id="radios-0" value="Tabla" th:field="*{tipo}">
-                  Tabla
-                </label>
-                </div>
-              <div class="radio">
-                <label for="radios-1">
-                  <input type="radio" name="radios" id="radios-1" value="Eje" th:field="*{tipo}">
-                  Eje
-                </label>
-                </div>
-              <div class="radio">
-                <label for="radios-2">
-                  <input type="radio" name="radios" id="radios-2" value="Rueda" th:field="*{tipo}">
-                  Rueda
-                </label>
-                </div>
-              <div class="radio">
-                <label for="radios-3">
-                  <input type="radio" name="radios" id="radios-3" value="Rodamientos" th:field="*{tipo}">
-                  Rodamientos
-                </label>
-                </div>
-              <div class="radio">
-                <label for="radios-4">
-                  <input type="radio" name="radios" id="radios-4" value="Lija" th:field="*{tipo}">
-                  Lija
-                </label>
-                </div>
-              <div class="radio">
-                <label for="radios-5">
-                  <input type="radio" name="radios" id="radios-5" value="Cera" th:field="*{tipo}">
-                  Cera
-                </label>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group my-3">
-              <label class="col-md-3 control-label my-2" for="textinput">Precio</label>  
-              <div class="col-2">
-                <input id="textinput" name="textinput" type="text" placeholder="9999" 
-                class="form-control input-md" th:field="*{precio}">
-              </div>            
-              <span class="help-block col-md-12">Introduzca el precio del producto</span>  
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group my-3">
-              <label class="col-md-3 control-label my-2" for="textinput">Cantidad</label>  
-              <div class="col-2">
-                <input id="textinput" name="textinput" type="text" placeholder="3" 
-                class="form-control input-md" th:field="*{cantidad}">
-              </div>
-              <span class="help-block col-md-12">Introduzca la cantidad de productos de las que disponemos</span>  
-            </div>
+        
+        <div class="form-group my-3">
+          <label class="col-md-3 control-label my-2" for="textinput">Nombre</label>
+          <div class="mensajeError text-danger" id="errorNombre" ></div>
+          <div class="col-md-12">
+            <input id="nombre" name="textinput" type="text" placeholder="Nombre" class="form-control input-md"
+              th:field="*{nombre}">
+            <span class="help-block">Introduzca el nombre del producto</span>
+          </div>
+        </div>
 
-            <div class="form-group align-items-center my-2">
-              <input type="submit" class="btn btn-primary" value="Enviar">
-            </div>
-            
-            </fieldset>
-            </form>
+        <div class="form-group my-3">
+          <label class="col-md-3 control-label my-2" for="textinput">Imagen</label>
+          <div class="mensajeError text-danger" id="errorNombre" ></div>
+          <div class="col-md-12">
+            <input id="imagen" name="textinput" type="text" placeholder="http://......" class="form-control input-md"
+              th:field="*{imagen}">
+            <span class="help-block">Introduzca la url del producto</span>
+          </div>
+        </div>
 
-    </div>
-    
+        <div class="form-group my-3">
+          <label class="col-md-3 control-label" for="selectinput">Marca</label>
+          <div class="mensajeError text-danger" id="errorNombre" ></div>
+          <div class="col-md-12">
+            <select name="selectinput" id="marca" th:field="*{marca}">
+              <option value="" selected="selected" hidden="hidden">Marca</option>
+              <option th:value="BD">BD</option>
+              <option th:value="Dickies">Dickies</option>
+              <option th:value="Element">Element</option>
+              <option th:value="Grizzly">Grizzly</option>
+              <option th:value="Imagine">Imagine</option>
+              <option th:value="Independent">Independent</option>
+              <option th:value="LuckyBearings">LuckyBearings</option>
+              <option th:value="Primitive">Primitive</option>
+              <option th:value="Real">Real</option>
+              <option th:value="SkateShop">SkateShop</option>
+              <option th:value="Spitfire">Spitfire</option>
+              <option th:value="Venture">Venture</option>
+            </select>
+            <span class="help-block">Introduzca la marca del producto</span>
+          </div>
+        </div>
+
+        <div class="form-group my-3">
+          <label class="col-md-3 control-label my-2" for="radios">Tipo</label>
+          
+          <div class="col-md-4">
+            <div class="radio">
+              <label for="radios-0">
+                <input type="radio" name="radios" id="radios-0" value="Tabla" th:field="*{tipo}" required>
+                Tabla
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-1">
+                <input type="radio" name="radios" id="radios-1" value="Eje" th:field="*{tipo}">
+                Eje
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-2">
+                <input type="radio" name="radios" id="radios-2" value="Rueda" th:field="*{tipo}">
+                Rueda
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-3">
+                <input type="radio" name="radios" id="radios-3" value="Rodamientos" th:field="*{tipo}">
+                Rodamientos
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-4">
+                <input type="radio" name="radios" id="radios-4" value="Lija" th:field="*{tipo}">
+                Lija
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-5">
+                <input type="radio" name="radios" id="radios-5" value="Cera" th:field="*{tipo}">
+                Cera
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group my-3">
+          <label class="col-md-3 control-label my-2" for="textinput">Precio</label>
+          <div class="mensajeError text-danger" id="errorNombre" ></div>
+          <div class="col-2">
+            <input id="precio" name="textinput" step="any" min="0.5" type="number" placeholder="9999"
+              class="form-control input-md" th:field="*{precio}">
+          </div>
+          <span class="help-block col-md-12">Introduzca el precio del producto</span>
+        </div>
+
+        <div class="form-group my-3">
+          <label class="col-md-3 control-label my-2" for="textinput">Cantidad</label>
+          <div class="mensajeError text-danger" id="errorNombre" ></div>
+          <div class="col-2">
+            <input id="cantidad" name="textinput" min="1" type="number" placeholder="3" class="form-control input-md"
+              th:field="*{cantidad}">
+          </div>
+          <span class="help-block col-md-12">Introduzca la cantidad de productos de los que disponemos</span>
+        </div>
+
+        <div class="form-group align-items-center my-2">
+          <input type="submit" class="btn btn-primary" value="Enviar" id="enviar">
+        </div>
+
+      </fieldset>
+    </form>
+
+  </div>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+          AOS.init();
+        </script>
+
 </body>
+
 </html>

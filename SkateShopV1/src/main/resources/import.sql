@@ -34,8 +34,5 @@ INSERT INTO LINEA_VENTA (ID, PRODUCTO_ID, CANTIDAD, PRECIO, VENTA_ID) VALUES (4,
 
 
 
-alter sequence hibernate_sequence restart with 500;
-
-
 
 

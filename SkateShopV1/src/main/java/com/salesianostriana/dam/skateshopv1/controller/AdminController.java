@@ -113,13 +113,17 @@ public class AdminController {
 	@GetMapping("/admin/editarProducto/{id}")
 	public String editarProducto(@PathVariable("id") long id, Model model) {
 
-		model.addAttribute("producto", productoService.findById(id));
-		return "nuevoProducto";
+		Producto p = productoService.findById(id);
+		if(p!=null) {
+			model.addAttribute("producto", productoService.findById(id));
+			return "nuevoProducto";
+		}
+		return "redirect:/admin/gestion";
 	}
 	
 	@PostMapping("/admin/editarProducto/submit")
 	public String procesarEdicion(@ModelAttribute("producto") Producto p) {
-		
+				
 		productoService.edit(p);
 		return "redirect:/admin/gestion";
 	}
@@ -129,11 +133,17 @@ public class AdminController {
 	@GetMapping("/admin/borrarProducto/{id}")
 	public String borrarProducto(@PathVariable("id") long id) {
 		
-		if(lineaVentaService.esProductoBorrable(productoService.findById(id))) 
-			return "redirect:/admin/gestion/?error=true";
+		Producto p = productoService.findById(id);
 		
-		else
-			productoService.deleteById(id);
+		if(p!=null) {
+			
+			if(lineaVentaService.esProductoBorrable(p)) 
+				return "redirect:/admin/gestion/?error=true";
+			
+			else
+				productoService.deleteById(id);
+		}
+		
 		
 		return "redirect:/admin/gestion";
 	}

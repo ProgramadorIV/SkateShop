@@ -46,6 +46,9 @@
               <a class="nav-link" th:href="@{/galeria}">Fotos</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" th:href="@{/user/compras}" sec:authorize="isAuthenticated()">Pedidos</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" th:href="@{/logIn}" sec:authorize="!isAuthenticated()">Log In</a>
             </li>
             <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">

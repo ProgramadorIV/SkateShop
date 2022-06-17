@@ -1,5 +1,4 @@
 # SkateShop
-Tienda de skateboarding ya tu sabe
 
 CUENTAS PARA ACCEDER:
 

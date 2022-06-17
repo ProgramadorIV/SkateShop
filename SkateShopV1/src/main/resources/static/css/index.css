@@ -141,7 +141,24 @@ footer{
     .carousel-inner{
         height: 670px;
         width: 990px;
-    }
+    } 
+}
 
-    
+.fondo2{
+
+    background-image: url("https://mobimg.b-cdn.net/v3/fetch/e3/e3a154aead160b837d52b74cea3a816f.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+    width: 100%;
+    padding: 100px;
+    font-family: "urban", sans-serif;
+    font-size: x-large;
+    font-weight: 600;
+    text-align: left;
+    color: #31abff;
+    text-shadow: 0px 0px 9px #508AD3;
+    word-spacing: 5px;
+
 }

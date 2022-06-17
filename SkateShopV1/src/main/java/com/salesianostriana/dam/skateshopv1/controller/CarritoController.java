@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.skateshopv1.service.CarritoService;
 
@@ -31,6 +30,7 @@ public class CarritoController {
 	
 	@GetMapping("/carrito")
 	public String mostrarCarrito(Model model) {
+		model.addAttribute("listaInsuficientes", carritoService.avisarStockInsuficiente());
 		model.addAttribute("carrito", carritoService.getCarrito());
 		model.addAttribute("precioFinal", carritoService.calcularTotalCarrito());
 		return "carrito";

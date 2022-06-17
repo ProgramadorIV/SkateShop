@@ -3,7 +3,6 @@ package com.salesianostriana.dam.skateshopv1.service;
 
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.WebApplicationContext;
 
 import com.salesianostriana.dam.skateshopv1.model.Venta;
 import com.salesianostriana.dam.skateshopv1.repository.VentaRepository;

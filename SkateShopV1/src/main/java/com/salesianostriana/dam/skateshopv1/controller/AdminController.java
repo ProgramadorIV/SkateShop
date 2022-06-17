@@ -3,12 +3,12 @@ package com.salesianostriana.dam.skateshopv1.controller;
 import javax.servlet.http.HttpSession;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.skateshopv1.model.BuscarBean;
+import com.salesianostriana.dam.skateshopv1.model.Busqueda;
 import com.salesianostriana.dam.skateshopv1.model.Producto;
 import com.salesianostriana.dam.skateshopv1.service.LineaVentaService;
 import com.salesianostriana.dam.skateshopv1.service.ProductoService;
@@ -37,12 +37,6 @@ public class AdminController {
 	@Autowired
 	private LineaVentaService lineaVentaService;
 	
-	/**
-	 * Método que permite mostrar la página de inicio y muestra que estas logeado como administrador.
-	 * @param model
-	 * @param userDetails
-	 * @return String de la página de inicio.
-	 */
 
 	@GetMapping("/admin")
 	public String indiceAdmin(Model model, @AuthenticationPrincipal UserDetails userDetails) {
@@ -51,30 +45,19 @@ public class AdminController {
 		return "index";
 	}
 	
-	/**
-	 * Método que añade todos los productos para ser mostrados.
-	 * @param model
-	 * @return String de la página de gestión.
-	 */
-	
+
 	@GetMapping("/admin/gestion")
 	public String gestion(Model model) {
 		
 		model.addAttribute("productos", productoService.findAll());
 		
-		model.addAttribute("buscarForm", new BuscarBean());
+		model.addAttribute("buscarForm", new Busqueda());
 		return "gestion";
 	}
 	
-	/**
-	 * Método que permite al administrador buscar por nombre.
-	 * @param buscarBean
-	 * @param model
-	 * @return String de la página de gestión.
-	 */
 	
 	@PostMapping("/admin/search")
-	  public String searchProductoAdmin(@ModelAttribute("buscarForm") BuscarBean buscarBean,
+	  public String searchProductoAdmin(@ModelAttribute("buscarForm") Busqueda buscarBean,
 			 Model model){
 	  	model.addAttribute("productos", productoService.findByNombre(buscarBean.getBusqueda()));
 	  
@@ -87,6 +70,13 @@ public class AdminController {
 	public String ventas(Model model) {
 		
 		model.addAttribute("ventas", ventaService.findAll(Sort.by(Direction.ASC, "fecha")));
+		return "gestionVentas";
+	}
+	
+	@GetMapping("/admin/ventas/filtroDesc")
+	public String filtroDescendente(Model model) {
+		
+		model.addAttribute("ventas", ventaService.findAll(Sort.by(Direction.DESC, "fecha", "nombreUsuario")));
 		return "gestionVentas";
 	}
 	
@@ -111,7 +101,6 @@ public class AdminController {
 		return"nuevoProducto";
 	}
 	
-	//ESTO DEBE ESTAR EN EL FORMULARIO DE PRODUCTOS
 	@PostMapping("/admin/nuevoProducto/submit")
 	public String procesarForm(@ModelAttribute("producto") Producto p) {
 		
@@ -148,13 +137,6 @@ public class AdminController {
 		
 		return "redirect:/admin/gestion";
 	}
-	
-//	@GetMapping("/admin/nuevaVenta")
-//	
-//	public String {
-//		
-//	}
-	
 	
 	
 }

@@ -1,8 +1,10 @@
 package com.salesianostriana.dam.skateshopv1.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class CarritoService {
 	RepositorioUsuario repositorioUsuario;
 	
 	private Map<Producto, Integer> productosEnCarrito = new HashMap<>();
+	
+	private static double descuentoVentaMayorQue100 = 10;
+	private static double descuentoVentaMayorQue300 = 20;
 	
 	public void meterProductoEnCarritoCheckOut(Producto p) {
 		
@@ -83,8 +88,15 @@ public class CarritoService {
 		
 		double total = 0;
 		
-		for(Producto p : productosEnCarrito.keySet())			
-			total += p.getPrecio() * productosEnCarrito.get(p);
+		for(Producto p : productosEnCarrito.keySet()) {
+			
+			if(comprobarStock(p, productosEnCarrito.get(p)))
+				total += p.getPrecio() * productosEnCarrito.get(p);
+		}
+		if(total>100)
+			return total - total*descuentoVentaMayorQue100/100;
+		else if(total>500)
+			return total - total*descuentoVentaMayorQue300/100;
 		
 		return total;
 	}
@@ -111,6 +123,20 @@ public class CarritoService {
 			return true;
 		else
 			return false;
+	}
+	
+	public List<Producto> avisarStockInsuficiente(){
+		
+		List<Producto> lista = new ArrayList<>();
+		
+		for (Producto p : productosEnCarrito.keySet()) {
+			
+			if(!comprobarStock(p, productosEnCarrito.get(p)))
+				lista.add(p);
+		}
+		
+		
+		return lista;
 	}
 	
 	public void finalizarCarrito() {
@@ -151,10 +177,20 @@ public class CarritoService {
 				
 			}
 			
+			//En el caso de que introduzcan más cantidades de las que disponemos o alguien las haya comprado antes.
+			
 			if(totalAux>0) {
-				venta.setImporte(totalAux);
+				
+				if(totalAux>100)
+					venta.setImporte(totalAux - totalAux*descuentoVentaMayorQue100/100);
+				else if(totalAux>500)
+					venta.setImporte(totalAux - totalAux*descuentoVentaMayorQue300/100);
+				else
+					venta.setImporte(totalAux);
+				
 				ventaService.edit(venta);
 			}
+			
 			else {
 				ventaService.delete(venta);
 			}			

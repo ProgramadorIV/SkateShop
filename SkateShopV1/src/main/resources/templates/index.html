@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Índice</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Índice</title>
+  <meta name="description" content="Nuestra maravillosa página de inicio donde mostraremos quienes somos.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -15,148 +17,168 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,300&display=swap"
+    rel="stylesheet">
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
 </head>
+
 <body>
 
 
-    <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/">
-                <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}" alt="skateLogo" width="90px">
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/tienda}">Tienda</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/galeria}">Fotos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/carrito}">Carrito</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logIn}" sec:authorize="!isAuthenticated()">Log In</a>
-                  </li>
-                  <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-                    <li class="nav-item"> 
-                      <a class="nav-link" th:href="@{/admin/gestion}" sec:authorize="isAuthenticated()">Gestion</a>
-                    </li>
-                  </span>
-                  <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logOut}" sec:authorize="isAuthenticated()">Log Out</a>
-                  </li>
-                </ul>
-                <span class="navbar-text pe-4 fs-2">
-                  <p sec:authorize="isAuthenticated()" sec:authentication="name"></p>
-                </span>                  
-              </div>
-            </div>
-          </nav>
-      </header>
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="../static/media/skateLogo.png" th:src="@{media/skateLogo.png}" alt="skateLogo" width="90px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" th:href="@{/}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/tienda}">Tienda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/galeria}">Fotos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/carrito}">Carrito</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/logIn}" sec:authorize="!isAuthenticated()">Log In</a>
+            </li>
+            <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/gestion}" sec:authorize="isAuthenticated()">Gestion</a>
+              </li>
+            </span>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/logOut}" sec:authorize="isAuthenticated()">Log Out</a>
+            </li>
+          </ul>
+          <span class="navbar-text pe-4 fs-2">
+            <p sec:authorize="isAuthenticated()" sec:authentication="name"></p>
+          </span>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-          <!--Hacer unas columnas bien wapas: dos de col-12 al principio donde se explique un poco quienes somos y to el rollo y 
-              después una columna col-12 que tenga dos columnas col-6 que muestren dos imágenes con animación o yo que se.-->
 
-          <div class="container mt-5">
+  <div class="container mt-5">
 
-            <div class="row">
-              <div class="col-12 container row">
-                <div class="col-sm-12 col-md-6 textoJustificado">
+    <div class="row">
+      <div class="col-12 container row">
+        <div class="col-sm-12 col-md-6 textoJustificado">
 
-                  <h3>Quiénes somos</h3>
+          <h3>Quiénes somos</h3>
 
-                  <p>Nuestros orígenes se remontan a junio de 2022, mes en el que tras experimentar la dureza de la vida formativa, 
-                    decidimos ampliar nuestro campo de actuación y crear esta magnífica plataforma para fanáticos del skateboarding. 
-                    Nuestro equipo humano está formado por un elenco de amantes del patín que se dedican en cuerpo y alma a la promoción 
-                    de este bello deporte en la ciudad.
-                  </p>
-                  <p>Tenemos como objetivo ser líderes en el sector de la venta de equipación y accesorios de este deporte, siempre primando la plena satisfacción 
-                    del cliente y basándonos en nuestro profundo conocimiento del sector, teniendo en cuenta los años de dedición a este deporte como verdaderos skaters.
-                  </p>
+          <p>Nuestros orígenes se remontan a junio de 2022, mes en el que tras experimentar la dureza de la vida
+            formativa,
+            decidimos ampliar nuestro campo de actuación y crear esta magnífica plataforma para fanáticos del
+            skateboarding.
+            Nuestro equipo humano está formado por un elenco de amantes del patín que se dedican en cuerpo y alma a la
+            promoción
+            de este bello deporte en la ciudad.
+          </p>
+          <p>Tenemos como objetivo ser líderes en el sector de la venta de equipación y accesorios de este deporte,
+            siempre primando la plena satisfacción
+            del cliente y basándonos en nuestro profundo conocimiento del sector, teniendo en cuenta los años de
+            dedición a este deporte como verdaderos skaters.
+          </p>
 
-                </div>
-                <div class="col-sm-12 col-md-6 " data-aos="fade-left">
-                  <img src="http://1.bp.blogspot.com/-JhWqCQzAUWE/TVgiYgsJK7I/AAAAAAAACc8/iNdbCx-FuvE/s1600/COLEGIO+DE+LOS+SALESIANOS+%2528CONSTRUCCION%2529.JPG" 
-                  alt="Imagen de nuestro equipo." class="img-responsive w-100 h-100">
-                </div>
-              </div>
+        </div>
+        <div class="col-sm-12 col-md-6 " data-aos="fade-left">
+          <img
+            src="http://1.bp.blogspot.com/-JhWqCQzAUWE/TVgiYgsJK7I/AAAAAAAACc8/iNdbCx-FuvE/s1600/COLEGIO+DE+LOS+SALESIANOS+%2528CONSTRUCCION%2529.JPG"
+            alt="Imagen de nuestro equipo." class="img-responsive w-100 h-100">
+        </div>
+      </div>
 
-              <div class="col-12 container row mt-5">
+      <div class="col-12 container row mt-5">
 
-                <div class="col-sm-12 col-md-6" data-aos="fade-right">
-                  <img src="https://lh3.googleusercontent.com/QDRxfp0UaIfqxp8q4Az7lv61WP4AprDFUNVD6I27z5X0s5A2xQux8cla4WCCtSGnhDt4XdXZm3AwWWA=w1903-h969" 
-                  alt="Imagen de nuestros operarios trabajando." class="img-responsive w-100 h-100">
-                </div>
+        <div class="col-sm-12 col-md-6" data-aos="fade-right">
+          <img
+            src="https://lh5.googleusercontent.com/J-fmCNMKA5Ph1N50uPbyXKxbD9evVVOhd0SkliqIurJ0Eqr9NcNUNZtQu96P5T9zMs7LuigHjdctOZs=w1903-h969"
+            alt="Imagen de nuestros operarios trabajando." class="img-responsive w-100 h-100">
+        </div>
 
-                <div class="col-sm-12 col-md-6 textoJustificado">
+        <div class="col-sm-12 col-md-6 textoJustificado">
 
-                  <h3>Qué hacemos</h3>
+          <h3>Qué hacemos</h3>
 
-                  <p>Disponemos de todo tipo de material de primera calidad</p>
-                  <p></p>
-                </div>
+          <p>Disponemos de todo tipo de material relacionado con la p´ractica del skateboarding de primera calidad.
+            Además de dedicarnos al comercio online también disponemos
+            de tienda física donde podrás comprobar in situ la excelente calidad de nuestros productos.
+          </p>
+          <p>
+            Satisfacemos cualquier necesidad de equipación tanto para tu actividad deportiva privada como profesional.
+            Nuestros productos son de una gran calidad equiparable a
+            equipación profesional. Anímate y ven a conocernos ya sea online o en nuestra tienda de Conde de Bustillo,
+            eso si, ten cuidado con Miguel Campos, te intentará dar
+            gato por libre.
+          </p>
+        </div>
 
-              </div>
-            </div>
-            <!--QUOTES DE PATIN POTENTES-->
-            
-          </div>
-          
-          <footer data-aos="fade-up"
-          data-aos-anchor-placement="bottom-bottom">
-      
-            <div class="row columnaBonita p-1 p-lg-3 ">
-          
-              <div class="col-md-4 col-xs-12">
-                <p style="font-weight: 800;">C. Condes de Bustillo, 17
-                41010 Sevilla</p>
-              </div>
-          
-              <div class="col-md-4 col-xs-12">
-                <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
-              </div>
-          
-              <div class="col-md-4 col-xs-12">
-          
-                <p style="font-weight: 800;">Contáctanos</p>
-                <a href="https://es-la.facebook.com/ThrasherMagazine/" class="me-3">
-                  <i class="bi bi-facebook fs-4"></i>
-                </a>
-                <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="me-3">
-                  <i class="bi bi-twitter fs-4"></i>
-                </a>
-                <a href="https://www.instagram.com/a_nt0ni_0/" class="me-3">
-                  <i class="bi bi-instagram fs-4"></i>
-                </a>             
-              </div>
-          
-                
-            </div>
-          
-          </footer>
+      </div>
+    </div>
+  </div>
 
-          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-          <script>
-            AOS.init();
-          </script>
-    
+  <div class="col-12 fondo2 mt-5 mb-0" data-aos="zoom-in">
+    <div class="w-50 h-50 m-auto">
+      <q>No se llega a la cima superando a los demas sino superandote a ti mismo</q>
+    </div>
+  </div>
+
+  <footer data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" class="mt-0">
+
+    <div class="row columnaBonita p-1 p-lg-3 ">
+
+      <div class="col-md-4 col-xs-12">
+        <p style="font-weight: 800;">C. Condes de Bustillo, 17
+          41010 Sevilla</p>
+      </div>
+
+      <div class="col-md-4 col-xs-12">
+        <img src="../static/media/skateLogo.png" th:src="@{/media/skateLogo.png}" alt="Logo skate" width="100px">
+      </div>
+
+      <div class="col-md-4 col-xs-12">
+
+        <p style="font-weight: 800;">Contáctanos</p>
+        <a href="https://es-la.facebook.com/ThrasherMagazine/" class="me-3">
+          <i class="bi bi-facebook fs-4"></i>
+        </a>
+        <a href="https://twitter.com/thrashermag?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="me-3">
+          <i class="bi bi-twitter fs-4"></i>
+        </a>
+        <a href="https://www.instagram.com/a_nt0ni_0/" class="me-3">
+          <i class="bi bi-instagram fs-4"></i>
+        </a>
+      </div>
+
+
+    </div>
+
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
 </body>
+
 </html>

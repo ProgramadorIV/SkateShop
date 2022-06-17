@@ -136,7 +136,7 @@ function comprobarCantidad(){
             comprobacion = false;
 
         }
-        else if(!Number.isInteger(campoCantidad.value)){
+        else if(!Number.isInteger(Number(campoCantidad.value))){
             error = "El valor debe ser un entero.";
             comprobacion = false;
 
